@@ -24,10 +24,10 @@
       <tal:items repeat="item view/results">
         <tal:image define="image python:view.image(item)">
           <img src="" alt="" width="" height=""
-              data-author="Author" 
-              data-cycle-desc="Description" 
-              data-date="Aug, 2014" 
-              data-title="Title" 
+              data-author="Author"
+              data-cycle-desc="Description"
+              data-date="Aug, 2014"
+              data-title="Title"
               tal:attributes="alt item/Title;
                               height image/height;
                               src image/url;
