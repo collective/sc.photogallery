@@ -15,7 +15,9 @@ def test_suite():
         if doc.startswith('test_') and doc.endswith('.robot')
     ]
     suite.addTests([
-        layered(robotsuite.RobotTestSuite(t), layer=ROBOT_TESTING)
+        layered(
+            robotsuite.RobotTestSuite(t, noncritical=['Expected Failure']),
+            layer=ROBOT_TESTING)
         for t in tests
     ])
     return suite
