@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="sc.photogallery">
+
+  <five:registerPackage package="." />
+  <include package="five.grok" />
+  <include package="plone.app.dexterity" />
+  <include package="plone.app.referenceablebehavior" />
+  <include package="plone.app.relationfield" />
+
+  <permission
+      id="sc.photogallery.AddPhotoGallery"
+      title="sc.photogallery: Add Photo Gallery"
+      />
+
+  <grok:grok package="." />
+
+  <include file="profiles.zcml" />
+  <include package=".browser" />
+
+  <browser:resourceDirectory name="sc.photogallery" directory="static" />
+
+</configure>

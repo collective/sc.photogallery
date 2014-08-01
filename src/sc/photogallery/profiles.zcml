@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="sc.photogallery">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Photo Gallery"
+      directory="profiles/default"
+      description="A Photo Gallery content type with a slideshow view."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      i18n:attributes="title; description"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="sc.photogallery: uninstall"
+      directory="profiles/uninstall"
+      description="Uninstalls sc.photogallery."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      i18n:attributes="title; description"
+      />
+
+  <!-- include package=".upgrades" / -->
+
+  <utility factory=".config.HiddenProfiles" name="sc.photogallery" />
+
+</configure>

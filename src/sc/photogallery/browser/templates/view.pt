@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    metal:use-macro="context/main_template/macros/master"
+    i18n_domain="sc.photogallery">
+
+<head>
+  <metal:js fill-slot="javascript_head_slot">
+    <script src=""
+        tal:define="portal_url context/@@plone_portal_state/portal_url"
+        tal:attributes="src string:${portal_url}/++resource++sc.photogallery/jquery.cycle2.min.js"></script>
+  </metal:js>
+</head>
+
+<body>
+  <metal:block fill-slot="content-core" tal:define="is_empty view/is_empty">
+    <div class="cycle-slideshow" tal:condition="not:is_empty"
+        data-cycle-overlay-template="<span class=slide-num>{{slideNum}} / {{slideCount}}</span>  <span class=slide-title>{{title}}</span> <span class=slide-desc>{{desc}}</span> &copy; {{author}} <span class=slide-data>({{date}})</span>"
+        data-cycle-timeout="4000">
+
+      <div class="cycle-overlay custom"></div>
+
+      <tal:items repeat="item view/results">
+        <tal:image define="image python:view.image(item)">
+          <img src="" alt="" width="" height=""
+              data-author="Author" 
+              data-cycle-desc="Description" 
+              data-date="Aug, 2014" 
+              data-title="Title" 
+              tal:attributes="alt item/Title;
+                              height image/height;
+                              src image/url;
+                              width image/width;
+                              data-author item/Rights;
+                              data-cycle-desc item/Description;
+                              data-date python:view.localized_time(item);
+                              data-title item/Title;">
+        </tal:image>
+      </tal:items>
+    </div>
+    <div class="" tal:condition="is_empty" i18n:translate="">
+      The photo gallery has no images on it.
+    </div>
+  </metal:block>
+</body>
+</html>
