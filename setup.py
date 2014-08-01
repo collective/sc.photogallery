@@ -3,7 +3,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 version = '0.1'
-description = 'FIXME'
+description = 'A Photo Gallery content type with a slideshow view.'
 long_description = (
     open('README.rst').read() + '\n' +
     open('CONTRIBUTORS.rst').read() + '\n' +
@@ -16,9 +16,10 @@ setup(
     description=description,
     long_description=long_description,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Plone',
+        'Framework :: Plone :: 4.2',
         'Framework :: Plone :: 4.3',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
@@ -27,11 +28,10 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='',
+    keywords='plone photo gallery content type dexterity',
     author='Simples Consutoria',
     author_email='produtos@simplesconsultoria.com.br',
     url='https://github.com/simplesconsultoria/sc.photogallery',
-    license='GPLv2',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=['sc'],
@@ -43,8 +43,11 @@ setup(
         'plone.app.dexterity [grok, relations]',
         'plone.app.referenceablebehavior',
         'plone.app.relationfield',
+        'plone.app.textfield',
         'plone.dexterity',
         'plone.directives.form',
+        'plone.memoize',
+        'Products.CMFPlone >=4.2',
         'Products.GenericSetup',
         'setuptools',
         'zope.i18nmessageid',
@@ -57,6 +60,7 @@ setup(
             'plone.browserlayer',
             'plone.testing',
             'plone.uuid',
+            'robotsuite',
             'zope.component',
         ],
     },
