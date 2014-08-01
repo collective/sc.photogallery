@@ -15,7 +15,6 @@ ${description_selector} =  textarea#form-widgets-IDublinCore-description
 *** Test cases ***
 
 Test CRUD
-    [Tags]  Expected Failure
     Enable Autologin as  Site Administrator
     Goto Homepage
 
