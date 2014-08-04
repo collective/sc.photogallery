@@ -15,6 +15,20 @@
 
 <body>
   <metal:block fill-slot="content-core" tal:define="is_empty view/is_empty">
+    <tal:text define="text context/text/output|nothing">
+      <p tal:define="is_editable context/@@plone_context_state/is_editable"
+         tal:condition="python:not text and is_editable"
+         i18n:domain="plone"
+         i18n:translate="no_body_text"
+         class="discreet">
+          This item does not have any body text, click the edit tab to change it.
+      </p>
+
+      <div id="parent-fieldname-text" class="" tal:condition="text">
+        <div tal:content="structure text">The body</div>
+      </div>
+    </tal:text>
+
     <div class="cycle-slideshow" tal:condition="not:is_empty"
         data-cycle-overlay-template="<span class=slide-num>{{slideNum}} / {{slideCount}}</span> <br /> <span class=slide-title>{{title}}</span> <span class=slide-desc>{{desc}}</span> <br /> <span class=slide-author> {{author}}</span> <span class=slide-data>({{date}})</span>"
         data-cycle-timeout="4000">
