@@ -2,7 +2,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '1.0a1'
+version = '1.0a2.dev0'
 description = 'A Photo Gallery content type with a slideshow view.'
 long_description = (
     open('README.rst').read() + '\n' +
