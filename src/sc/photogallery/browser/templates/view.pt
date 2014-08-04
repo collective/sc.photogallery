@@ -16,10 +16,11 @@
 <body>
   <metal:block fill-slot="content-core" tal:define="is_empty view/is_empty">
     <div class="cycle-slideshow" tal:condition="not:is_empty"
-        data-cycle-overlay-template="<span class=slide-num>{{slideNum}} / {{slideCount}}</span>  <span class=slide-title>{{title}}</span> <span class=slide-desc>{{desc}}</span> &copy; {{author}} <span class=slide-data>({{date}})</span>"
+        data-cycle-overlay-template="<span class=slide-num>{{slideNum}} / {{slideCount}}</span> <br /> <span class=slide-title>{{title}}</span> <span class=slide-desc>{{desc}}</span> <br /> <span class=slide-author> {{author}}</span> <span class=slide-data>({{date}})</span>"
         data-cycle-timeout="4000">
 
-      <div class="cycle-overlay custom"></div>
+      <div class="cycle-prev">&lt;</div>
+      <div class="cycle-next">&gt;</div>
 
       <tal:items repeat="item view/results">
         <tal:image define="image python:view.image(item)">
@@ -38,6 +39,8 @@
                               data-title item/Title;">
         </tal:image>
       </tal:items>
+      <div class="cycle-pager"></div>
+      <div class="cycle-overlay custom"></div>
     </div>
     <div class="" tal:condition="is_empty" i18n:translate="">
       The photo gallery has no images on it.
