@@ -22,7 +22,7 @@ class View(grok.View):
     def is_empty(self):
         return len(self.results()) == 0
 
-    def image(self, obj, scale='preview'):
+    def image(self, obj, scale='large'):
         """Return an image scale if the item has an image field.
 
         :param item: [required]
