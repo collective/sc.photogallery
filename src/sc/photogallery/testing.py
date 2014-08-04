@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""Prepare test fixtures; note that in Plone >= 5.0 we need to manually
+install the desired content types.
+"""
+from plone import api
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
@@ -6,18 +10,39 @@ from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 
+PLONE_VERSION = api.env.plone_version()
+
+
+def turn_off_referenceablebehavior():
+    """FIXME"""
+    from plone.dexterity.interfaces import IDexterityFTI
+    from zope.component import queryUtility
+    fti = queryUtility(IDexterityFTI, name='Photo Gallery')
+    behaviors = list(fti.behaviors)
+    behaviors.remove('plone.app.referenceablebehavior.referenceable.IReferenceable')
+    fti.behaviors = tuple(behaviors)
+
 
 class Fixture(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
+        if PLONE_VERSION >= '5.0':
+            import plone.app.contenttypes
+            self.loadZCML(package=plone.app.contenttypes)
+
         import sc.photogallery
         self.loadZCML(package=sc.photogallery)
 
     def setUpPloneSite(self, portal):
+        if PLONE_VERSION >= '5.0':
+            self.applyProfile(portal, 'plone.app.contenttypes:default')
+
         self.applyProfile(portal, 'sc.photogallery:default')
 
+        if PLONE_VERSION >= '5.0':
+            turn_off_referenceablebehavior()
 
 FIXTURE = Fixture()
 
