@@ -7,6 +7,8 @@ from Products.GenericSetup.upgrade import listUpgradeSteps
 
 import unittest
 
+CSS = '++resource++sc.photogallery/photogallery.css'
+
 
 class BaseTestCase(unittest.TestCase):
 
@@ -33,6 +35,10 @@ class TestInstall(BaseTestCase):
     def test_browser_layer_installed(self):
         self.assertIn(IBrowserLayer, registered_layers())
 
+    def test_cssregistry(self):
+        resource_ids = self.portal.portal_css.getResourceIds()
+        self.assertIn(CSS, resource_ids)
+
     def test_version(self):
         self.assertEqual(
             self.st.getLastVersionForProfile(self.profile), (u'1000',))
@@ -52,6 +58,10 @@ class TestUninstall(BaseTestCase):
     def test_browser_layer_removed_uninstalled(self):
         self.qi.uninstallProducts(products=[PROJECTNAME])
         self.assertNotIn(IBrowserLayer, registered_layers())
+
+    def test_cssregistry_removed(self):
+        resource_ids = self.portal.portal_css.getResourceIds()
+        self.assertNotIn(CSS, resource_ids)
 
 
 class TestUpgrade(BaseTestCase):
