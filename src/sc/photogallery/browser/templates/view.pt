@@ -10,6 +10,9 @@
     <script src=""
         tal:define="portal_url context/@@plone_portal_state/portal_url"
         tal:attributes="src string:${portal_url}/++resource++sc.photogallery/jquery.cycle2.min.js"></script>
+    <script src=""
+        tal:define="portal_url context/@@plone_portal_state/portal_url"
+        tal:attributes="src string:${portal_url}/++resource++sc.photogallery/jquery.cycle2.center.js"></script>
   </metal:js>
 </head>
 
@@ -31,7 +34,10 @@
 
     <div class="cycle-slideshow" tal:condition="not:is_empty"
         data-cycle-overlay-template="<span class=slide-num>{{slideNum}} / {{slideCount}}</span> <br /> <span class=slide-title>{{title}}</span> <span class=slide-desc>{{desc}}</span> <br /> <span class=slide-author> {{author}}</span> <span class=slide-data>({{date}})</span>"
-        data-cycle-timeout="4000">
+        data-cycle-timeout="4000"
+        data-cycle-center-horz="true"
+        data-cycle-center-vert="true"
+        data-cycle-pause-on-hover="true">
 
       <div class="cycle-prev">&lt;</div>
       <div class="cycle-next">&gt;</div>
