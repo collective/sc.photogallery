@@ -55,3 +55,7 @@ class PhotoGalleryTestCase(unittest.TestCase):
         allowed_types = [t.getId() for t in self.gallery.allowedContentTypes()]
         expected = ['Image']
         self.assertListEqual(allowed_types, expected)
+
+    def test_selectable_as_folder_default_page(self):
+        self.folder.setDefaultPage('gallery')
+        self.assertEqual(self.folder.getDefaultPage(), 'gallery')

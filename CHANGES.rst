@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- A Photo Gallery can now be set as the default page view on a container (closes `#1`_).
+  [hvelarde]
+
 - Use center script for a better view when using portrait and landscape photos together
   [agnogueira]
 
@@ -20,3 +23,5 @@ There's a frood who really knows where his towel is.
 ------------------
 
 - Initial release.
+
+.. _`#1`: https://github.com/simplesconsultoria/sc.photogallery/issues/1

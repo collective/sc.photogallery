@@ -23,6 +23,7 @@ class BaseTestCase(unittest.TestCase):
         self.qi = self.portal['portal_quickinstaller']
         self.wt = self.portal['portal_workflow']
         self.st = self.portal['portal_setup']
+        self.sprops = self.portal['portal_properties'].site_properties
 
 
 class TestInstall(BaseTestCase):
@@ -38,6 +39,9 @@ class TestInstall(BaseTestCase):
     def test_cssregistry(self):
         resource_ids = self.portal.portal_css.getResourceIds()
         self.assertIn(CSS, resource_ids)
+
+    def test_default_page_types(self):
+        self.assertIn('Photo Gallery', self.sprops.default_page_types)
 
     def test_version(self):
         self.assertEqual(
@@ -62,6 +66,9 @@ class TestUninstall(BaseTestCase):
     def test_cssregistry_removed(self):
         resource_ids = self.portal.portal_css.getResourceIds()
         self.assertNotIn(CSS, resource_ids)
+
+    def test_default_page_types_removed(self):
+        self.assertNotIn('Photo Gallery', self.sprops.default_page_types)
 
 
 class TestUpgrade(BaseTestCase):
