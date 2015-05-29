@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Add Photo Gallery tile for collective.cover.
+  [rodfersou, hvelarde]
+
 - Remove dependency on five.grok (closes `#7`_).
   [hvelarde]
 
