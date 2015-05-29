@@ -50,3 +50,11 @@ class PhotoGalleryTileTestCase(TestTileMixin, unittest.TestCase):
         self.tile.populate_with_object(g1)
         rendered = self.tile()
         self.assertIn(u'foo', rendered)
+
+def test_suite():
+    """Load tile tests only in Plone < 5.0."""
+    from sc.photogallery.testing import PLONE_VERSION
+    if PLONE_VERSION < '5.0':
+        return unittest.defaultTestLoader.loadTestsFromName(__name__)
+    else:
+        return unittest.TestSuite()
