@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Drop support for Plone 4.2.
+  [hvelarde]
+
 - A Photo Gallery can now be set as the default page view on a container (closes `#1`_).
   [hvelarde]
 

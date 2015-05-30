@@ -60,7 +60,6 @@ class TestUninstall(BaseTestCase):
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
 
     def test_browser_layer_removed_uninstalled(self):
-        self.qi.uninstallProducts(products=[PROJECTNAME])
         self.assertNotIn(IBrowserLayer, registered_layers())
 
     def test_cssregistry_removed(self):
