@@ -25,6 +25,7 @@
 
   <include package=".upgrades" />
 
-  <utility factory=".config.HiddenProfiles" name="sc.photogallery" />
+  <utility factory=".setuphandlers.HiddenProfiles" name="sc.photogallery" />
+  <utility factory=".setuphandlers.HiddenProducts" name="sc.photogallery" />
 
 </configure>
