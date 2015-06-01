@@ -16,7 +16,7 @@ class BaseUpgradeTestCase(unittest.TestCase):
         self.to_version = to_version
 
     def _get_upgrade_step_by_title(self, title):
-        """Return the upgrade step that matches with the title specified.
+        """Return the upgrade step that matches the title specified.
 
         :param title: the title used to register the upgrade step
         :type title: str
@@ -26,14 +26,13 @@ class BaseUpgradeTestCase(unittest.TestCase):
         self.setup.setLastVersionForProfile(self.profile_id, self.from_version)
         upgrades = self.setup.listUpgrades(self.profile_id)
         steps = [s for s in upgrades[0] if s['title'] == title]
-        print type(steps[0])
         return steps[0] if steps else None
 
     def _do_upgrade_step(self, step):
         """Execute an upgrade step.
 
-        :param title: the step we want to run
-        :type title: dict
+        :param step: the step we want to run
+        :type step: dict
         """
         request = self.layer['request']
         request.form['profile_id'] = self.profile_id
@@ -57,3 +56,31 @@ class To1001TestCase(BaseUpgradeTestCase):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
         self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self._get_registered_steps, 3)
+
+    def test_miscellaneous(self):
+        # check if the upgrade step is registered
+        title = u'Miscellaneous'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        js_tool = self.portal['portal_javascripts']
+        from sc.photogallery.tests.test_setup import JS
+        for id in JS:
+            js_tool.unregisterResource(id)
+
+        self.assertEqual(
+            set([JS]) & set([js_tool.getResourceIds()]), set([]))
+
+        types_tool = self.portal['portal_types']
+        old_klass = 'sc.photogallery.content.photogallery.PhotoGallery'
+        new_klass = 'sc.photogallery.content.PhotoGallery'
+        types_tool['Photo Gallery'].klass = old_klass
+        self.assertEqual(types_tool['Photo Gallery'].klass, old_klass)
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        for id in JS:
+            self.assertIn(id, js_tool.getResourceIds())
+
+        self.assertEqual(types_tool['Photo Gallery'].klass, new_klass)

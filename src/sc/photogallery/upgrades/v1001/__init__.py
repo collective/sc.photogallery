@@ -28,6 +28,8 @@ def update_catalog(context):
     catalog = api.portal.get_tool('portal_catalog')
     results = catalog(object_provides=IPhotoGallery.__identifier__)
     logger.info(u'{0} objects found'.format(len(results)))
-    for obj in (i.getObject() for i in results):
+    # use a generator to save memory
+    results = (i.getObject() for i in results)
+    for obj in results:
         obj.reindexObject()
     logger.info(u'Catalog successfully updated')
