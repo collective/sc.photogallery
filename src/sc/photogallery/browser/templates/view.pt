@@ -22,12 +22,11 @@
         <div class="slideshow-player">
           <div class="cycle-player cycle-slideshow"
                data-cycle-slides="> div"
-               data-cycle-timeout="4000"
+               data-cycle-timeout="0"
                data-cycle-swipe="true"
-               data-cycle-pause-on-hover=".cycle-player"
                data-cycle-prev=".slideshow-player .cycle-prev"
                data-cycle-next=".slideshow-player .cycle-next"
-               data-allow-wrap="false"
+               data-allow-wrap="true"
                data-cycle-fx="fade">
             <div tal:repeat="item view/results">
               <tal:image define="image python:view.image(item)">
@@ -39,17 +38,24 @@
             </div>
           </div><!-- cycle-player -->
           <div class="cycle-nagivation">
-            <a href="#" class="cycle-prev">&laquo; Anterior</a>
-            <a href="#" class="cycle-next">Próximo &raquo;</a>
+            <a href="#" class="cycle-prev">
+              <div>
+                &lang;
+              </div>
+            </a>
+            <a href="#" class="cycle-next">
+              <div>
+                &rang;
+              </div>
+            </a>
           </div>
         </div><!-- slideshow-player -->
         <div class="slideshow-pager">
           <div class="slideshow-description">
             <div class="cycle-description cycle-slideshow"
                  data-cycle-slides="> div"
-                 data-cycle-timeout="4000"
-                 data-cycle-pause-on-hover=".cycle-player"
-                 data-allow-wrap="false"
+                 data-cycle-timeout="0"
+                 data-allow-wrap="true"
                  data-cycle-fx="fade">
               <div tal:repeat="item view/results">
                 <tal:description define="desc python:view.description(item)">
@@ -64,14 +70,13 @@
           <div class="slideshow-carrossel">
             <div class="cycle-carrossel cycle-slideshow"
                  data-cycle-slides="> div"
-                 data-cycle-timeout="4000"
-                 data-cycle-pause-on-hover=".cycle-player"
+                 data-cycle-timeout="0"
                  data-cycle-fx="carousel"
                  data-cycle-offset="1"
                  data-cycle-carousel-fluid="true"
                  data-cycle-prev=".slideshow-player .cycle-prev"
                  data-cycle-next=".slideshow-player .cycle-next"
-                 data-allow-wrap="false">
+                 data-allow-wrap="true">
               <div class="thumb-itens"
                    tal:repeat="item view/results">
                 <tal:image define="thumbnail python:view.image(item, scale='thumb')"
