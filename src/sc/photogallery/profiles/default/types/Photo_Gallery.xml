@@ -16,7 +16,7 @@
 
   <!-- schema interface and class used for content items -->
   <property name="schema">sc.photogallery.interfaces.IPhotoGallery</property>
-  <property name="klass">sc.photogallery.content.photogallery.PhotoGallery</property>
+  <property name="klass">sc.photogallery.content.PhotoGallery</property>
 
   <!-- add permission -->
   <property name="add_permission">sc.photogallery.AddPhotoGallery</property>

@@ -30,4 +30,4 @@ class To1001TestCase(BaseUpgradeTestCase):
     def test_upgrade_to_1001_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
         self.assertTrue(version >= self.to_version)
-        self.assertEqual(self._upgrades_to_do(), 1)
+        self.assertEqual(self._upgrades_to_do(), 3)
