@@ -38,16 +38,8 @@
             </div>
           </div><!-- cycle-player -->
           <div class="cycle-nagivation">
-            <a href="#" class="cycle-prev">
-              <div>
-                &lang;
-              </div>
-            </a>
-            <a href="#" class="cycle-next">
-              <div>
-                &rang;
-              </div>
-            </a>
+            <a href="#" class="cycle-prev"><span>&lang;</span></a>
+            <a href="#" class="cycle-next"><span>&rang;</span></a>
           </div>
         </div><!-- slideshow-player -->
         <div class="slideshow-pager">

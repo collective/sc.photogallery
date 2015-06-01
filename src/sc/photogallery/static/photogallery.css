@@ -134,21 +134,21 @@ body.portaltype-photo-gallery a.cycle-next
     filter: alpha(opacity=0);
 }
 
-body.portaltype-photo-gallery a.cycle-prev div,
-body.portaltype-photo-gallery a.cycle-next div
+body.portaltype-photo-gallery a.cycle-prev,
+body.portaltype-photo-gallery a.cycle-next
 {
     position: absolute;
     top: 50%;
 }
 
 body.portaltype-photo-gallery .cycle-prev,
-body.portaltype-photo-gallery .cycle-prev div
+body.portaltype-photo-gallery .cycle-prev
 {
     left: 10px;
 }
 
 body.portaltype-photo-gallery .cycle-next,
-body.portaltype-photo-gallery .cycle-next div
+body.portaltype-photo-gallery .cycle-next
 {
     right: 10px;
 }
