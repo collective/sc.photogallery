@@ -1,70 +1,91 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:metal="http://xml.zope.org/namespaces/metal"
-    xmlns:tal="http://xml.zope.org/namespaces/tal"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    metal:use-macro="context/main_template/macros/master"
-    i18n_domain="sc.photogallery">
-
-<head>
-  <metal:js fill-slot="javascript_head_slot">
-    <script src=""
-        tal:define="portal_url context/@@plone_portal_state/portal_url"
-        tal:attributes="src string:${portal_url}/++resource++sc.photogallery/jquery.cycle2.min.js"></script>
-    <script src=""
-        tal:define="portal_url context/@@plone_portal_state/portal_url"
-        tal:attributes="src string:${portal_url}/++resource++sc.photogallery/jquery.cycle2.center.js"></script>
-  </metal:js>
-</head>
-
-<body>
-  <metal:block fill-slot="content-core" tal:define="is_empty view/is_empty">
-    <tal:text define="text context/text/output|nothing">
-      <p tal:define="is_editable context/@@plone_context_state/is_editable"
-         tal:condition="python:not text and is_editable"
-         i18n:domain="plone"
-         i18n:translate="no_body_text"
-         class="discreet">
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n_domain="sc.photogallery">
+  <body>
+    <metal:block fill-slot="content-core" tal:define="is_empty view/is_empty">
+      <tal:text define="text context/text/output|nothing">
+        <p tal:define="is_editable context/@@plone_context_state/is_editable"
+           tal:condition="python:not text and is_editable"
+           i18n:domain="plone"
+           i18n:translate="no_body_text"
+           class="discreet">
           This item does not have any body text, click the edit tab to change it.
-      </p>
-
-      <div id="parent-fieldname-text" class="" tal:condition="text">
-        <div tal:content="structure text">The body</div>
+        </p>
+        <div id="parent-fieldname-text" class="" tal:condition="text">
+          <div tal:content="structure text">The body</div>
+        </div>
+      </tal:text>
+      <div class="slideshow-container" tal:condition="not:is_empty">
+        <div class="slideshow-player">
+          <div class="cycle-player cycle-slideshow"
+               data-cycle-slides="> div"
+               data-cycle-timeout="0"
+               data-cycle-swipe="true"
+               data-cycle-prev=".slideshow-player .cycle-prev"
+               data-cycle-next=".slideshow-player .cycle-next"
+               data-allow-wrap="true"
+               data-cycle-fx="fade">
+            <div tal:repeat="item view/results">
+              <tal:image define="image python:view.image(item)">
+                <img tal:attributes="alt item/Title;
+                                     height image/height;
+                                     src image/url;
+                                     width image/width">
+              </tal:image>
+            </div>
+          </div><!-- cycle-player -->
+          <div class="cycle-nagivation">
+            <a href="#" class="cycle-prev"><span>&lang;</span></a>
+            <a href="#" class="cycle-next"><span>&rang;</span></a>
+          </div>
+        </div><!-- slideshow-player -->
+        <div class="slideshow-pager">
+          <div class="slideshow-description">
+            <div class="cycle-description cycle-slideshow"
+                 data-cycle-slides="> div"
+                 data-cycle-timeout="0"
+                 data-allow-wrap="true"
+                 data-cycle-fx="fade">
+              <div tal:repeat="item view/results">
+                <tal:description define="desc python:view.description(item)">
+                  <div class="slide-pagination">
+                  <span class="slide-num" tal:content="string:${desc/slide_num}" /> | <span class="slide-count" tal:content="string:${desc/slide_count}" />
+                  </div>
+                  <div class="description" tal:content="desc/description"></div>
+                </tal:description>
+              </div>
+            </div><!-- cycle-description -->
+          </div><!-- slideshow-description -->
+          <div class="slideshow-carrossel">
+            <div class="cycle-carrossel cycle-slideshow"
+                 data-cycle-slides="> div"
+                 data-cycle-timeout="0"
+                 data-cycle-fx="carousel"
+                 data-cycle-offset="1"
+                 data-cycle-carousel-fluid="true"
+                 data-cycle-prev=".slideshow-player .cycle-prev"
+                 data-cycle-next=".slideshow-player .cycle-next"
+                 data-allow-wrap="true">
+              <div class="thumb-itens"
+                   tal:repeat="item view/results">
+                <tal:image define="thumbnail python:view.image(item, scale='thumb')"
+                           condition="thumbnail">
+                  <img tal:attributes="alt item/Title;
+                                       height thumbnail/height;
+                                       src thumbnail/url;
+                                       width thumbnail/width">
+                </tal:image>
+              </div>
+            </div><!-- cycle-carrossel -->
+          </div><!-- slideshow-pager -->
+        </div><!-- slideshow-carrossel -->
       </div>
-    </tal:text>
-
-    <div class="cycle-slideshow" tal:condition="not:is_empty"
-        data-cycle-overlay-template="<span class=slide-num>{{slideNum}} / {{slideCount}}</span> <br /> <span class=slide-title>{{title}}</span> <span class=slide-desc>{{desc}}</span> <br /> <span class=slide-author> {{author}}</span> <span class=slide-data>({{date}})</span>"
-        data-cycle-timeout="4000"
-        data-cycle-center-horz="true"
-        data-cycle-center-vert="true"
-        data-cycle-pause-on-hover="true">
-
-      <div class="cycle-prev">&lt;</div>
-      <div class="cycle-next">&gt;</div>
-
-      <tal:items repeat="item view/results">
-        <tal:image define="image python:view.image(item)">
-          <img src="" alt="" width="" height=""
-              data-author="Author"
-              data-cycle-desc="Description"
-              data-date="Aug, 2014"
-              data-title="Title"
-              tal:attributes="alt item/Title;
-                              height image/height;
-                              src image/url;
-                              width image/width;
-                              data-author item/Rights;
-                              data-cycle-desc item/Description;
-                              data-date python:view.localized_time(item);
-                              data-title item/Title;">
-        </tal:image>
-      </tal:items>
-      <div class="cycle-pager"></div>
-      <div class="cycle-overlay custom"></div>
-    </div>
-    <div class="" tal:condition="is_empty" i18n:translate="">
-      The photo gallery has no images on it.
-    </div>
-  </metal:block>
-</body>
+      <div class="" tal:condition="is_empty" i18n:translate="">
+        The photo gallery has no images on it.
+      </div>
+    </metal:block>
+  </body>
 </html>

@@ -7,22 +7,22 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="sc.photogallery: 1010"
+      title="sc.photogallery: 1001"
       directory="profile"
-      description="Updates package to profile version 1010."
+      description="Updates package to profile version 1001."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       i18n:attributes="title; description"
       />
 
   <genericsetup:upgradeSteps
       source="1000"
-      destination="1010"
+      destination="1001"
       profile="sc.photogallery:default">
 
       <genericsetup:upgradeStep
-          title="Do something"
-          description="Updates package to profile version 1010."
-          handler=".handler.apply_profile"
+          title="Register javascripts used at photogallery package"
+          description="Updates package to profile version 1001."
+          handler=".apply_profile"
           />
 
   </genericsetup:upgradeSteps>

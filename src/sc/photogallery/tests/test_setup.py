@@ -3,32 +3,21 @@ from sc.photogallery.config import PROJECTNAME
 from sc.photogallery.interfaces import IBrowserLayer
 from sc.photogallery.testing import INTEGRATION_TESTING
 from plone.browserlayer.utils import registered_layers
-from Products.GenericSetup.upgrade import listUpgradeSteps
 
 import unittest
 
 CSS = '++resource++sc.photogallery/photogallery.css'
 
 
-class BaseTestCase(unittest.TestCase):
+class TestInstall(unittest.TestCase):
 
-    """Base test case to be used by other tests."""
+    """Ensure product is properly installed."""
 
     layer = INTEGRATION_TESTING
-
-    profile = 'sc.photogallery:default'
 
     def setUp(self):
         self.portal = self.layer['portal']
         self.qi = self.portal['portal_quickinstaller']
-        self.wt = self.portal['portal_workflow']
-        self.st = self.portal['portal_setup']
-        self.sprops = self.portal['portal_properties'].site_properties
-
-
-class TestInstall(BaseTestCase):
-
-    """Ensure product is properly installed."""
 
     def test_installed(self):
         self.assertTrue(self.qi.isProductInstalled(PROJECTNAME))
@@ -41,19 +30,25 @@ class TestInstall(BaseTestCase):
         self.assertIn(CSS, resource_ids)
 
     def test_default_page_types(self):
-        self.assertIn('Photo Gallery', self.sprops.default_page_types)
+        sprops = self.portal['portal_properties'].site_properties
+        self.assertIn('Photo Gallery', sprops.default_page_types)
 
     def test_version(self):
+        setup = self.portal['portal_setup']
+        profile = 'sc.photogallery:default'
         self.assertEqual(
-            self.st.getLastVersionForProfile(self.profile), (u'1000',))
+            setup.getLastVersionForProfile(profile), (u'1001',))
 
 
-class TestUninstall(BaseTestCase):
+class TestUninstall(unittest.TestCase):
 
     """Ensure product is properly uninstalled."""
 
+    layer = INTEGRATION_TESTING
+
     def setUp(self):
-        BaseTestCase.setUp(self)
+        self.portal = self.layer['portal']
+        self.qi = self.portal['portal_quickinstaller']
         self.qi.uninstallProducts(products=[PROJECTNAME])
 
     def test_uninstalled(self):
@@ -67,14 +62,5 @@ class TestUninstall(BaseTestCase):
         self.assertNotIn(CSS, resource_ids)
 
     def test_default_page_types_removed(self):
-        self.assertNotIn('Photo Gallery', self.sprops.default_page_types)
-
-
-class TestUpgrade(BaseTestCase):
-
-    """Ensure product upgrades work."""
-
-    @unittest.expectedFailure  # XXX: upgrade step is not registered yet
-    def test_to1010_available(self):
-        upgrades = listUpgradeSteps(self.st, self.profile, '1000')
-        self.assertEqual(len(upgrades), 1)
+        sprops = self.portal['portal_properties'].site_properties
+        self.assertNotIn('Photo Gallery', sprops.default_page_types)

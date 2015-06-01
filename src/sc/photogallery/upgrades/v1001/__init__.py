@@ -6,8 +6,8 @@ import logging
 
 
 def apply_profile(context):
-    """Updates package to profile version 1010."""
+    """Updates package to profile version 1001."""
     logger = logging.getLogger(PROJECTNAME)
-    profile = 'profile-sc.photogallery.upgrades.v1010:default'
+    profile = 'profile-sc.photogallery.upgrades.v1001:default'
     loadMigrationProfile(context, profile)
-    logger.info('Profile updated to version 1010')
+    logger.info('Profile updated to version 1001')

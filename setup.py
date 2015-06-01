@@ -37,6 +37,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'collective.js.cycle2',
         'five.grok',
         'plone.api',
         'plone.app.dexterity [grok, relations]',
@@ -50,7 +51,7 @@ setup(
         'Products.GenericSetup',
         'setuptools',
         'zope.i18nmessageid',
-        'zope.interface',
+        'zope.interface'
     ],
     extras_require={
         'test': [

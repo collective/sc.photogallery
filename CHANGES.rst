@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- New template with images pager and more layout control. (closes `#4`_).
+  [rodfersou]
+
 - Drop support for Plone 4.2.
   [hvelarde]
 
@@ -28,3 +31,4 @@ There's a frood who really knows where his towel is.
 - Initial release.
 
 .. _`#1`: https://github.com/simplesconsultoria/sc.photogallery/issues/1
+.. _`#4`: https://github.com/simplesconsultoria/sc.photogallery/issues/4
