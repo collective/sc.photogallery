@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<object name="Photo Gallery">
+  <property name="klass">sc.photogallery.content.PhotoGallery</property>
+</object>

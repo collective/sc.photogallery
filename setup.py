@@ -38,7 +38,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'collective.js.cycle2',
-        'five.grok',
         'plone.api',
         'plone.app.dexterity [grok, relations]',
         'plone.app.referenceablebehavior',
@@ -47,11 +46,12 @@ setup(
         'plone.dexterity',
         'plone.directives.form',
         'plone.memoize',
+        'plone.app.upgrade',
         'Products.CMFPlone >=4.3',
         'Products.GenericSetup',
         'setuptools',
         'zope.i18nmessageid',
-        'zope.interface'
+        'zope.interface',
     ],
     extras_require={
         'test': [

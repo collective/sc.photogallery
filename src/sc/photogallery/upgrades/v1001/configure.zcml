@@ -7,9 +7,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="sc.photogallery: 1001"
+      title="sc.photogallery:1001"
       directory="profile"
-      description="Updates package to profile version 1001."
+      description="Upgrade sc.photogallery to 1001."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       i18n:attributes="title; description"
       />
@@ -20,9 +20,21 @@
       profile="sc.photogallery:default">
 
       <genericsetup:upgradeStep
-          title="Register javascripts used at photogallery package"
-          description="Updates package to profile version 1001."
+          title="Miscellaneous"
+          description="Register JS resources and update type information."
           handler=".apply_profile"
+          />
+
+      <genericsetup:upgradeStep
+          title="Cook JS resources"
+          description="There were changes in the JS registry."
+          handler=".cook_javascript_resources"
+          />
+
+      <genericsetup:upgradeStep
+          title="Update catalog"
+          description="Update Photo Gallery objects as class information has changed."
+          handler=".update_catalog"
           />
 
   </genericsetup:upgradeSteps>
