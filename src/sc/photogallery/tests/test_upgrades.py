@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from sc.photogallery.testing import INTEGRATION_TESTING
 
 import unittest
@@ -84,3 +85,21 @@ class To1001TestCase(BaseUpgradeTestCase):
             self.assertIn(id, js_tool.getResourceIds())
 
         self.assertEqual(types_tool['Photo Gallery'].klass, new_klass)
+
+    def test_update_catalog(self):
+        # check if the upgrade step is registered
+        title = u'Update catalog'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # add an object and modified it without updating the catalog
+        with api.env.adopt_roles(['Manager']):
+            g1 = api.content.create(self.portal, 'Photo Gallery', 'g1')
+
+        g1.description = 'Foo'
+        catalog = self.portal['portal_catalog']
+        self.assertEqual(len(catalog(Description='Foo')), 0)
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertEqual(len(catalog(Description='Foo')), 1)
