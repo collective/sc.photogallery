@@ -10,12 +10,12 @@ var PhotoGallery = (function() {
     return $(selector, $container);
   };
   PhotoGallery.prototype.sync_slideshows = function(e, opts) {
-    var $slideshows, self;
+    var $description, $pager, self;
     self = e.data;
     $description = self.$('.cycle-description', this);
     $pager = self.$('.cycle-pager', this);
     $description.cycle('goto', opts.currSlide);
-    $pager.cycle('goto', opts.currSlide -1);
+    $pager.cycle('goto', opts.currSlide -1); // this is weird
   };
   PhotoGallery.prototype.thumbs_click = function(e) {
     var $slideshows, index, self;
