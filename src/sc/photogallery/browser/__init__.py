@@ -28,20 +28,6 @@ class View(DefaultView):
         scales = obj.restrictedTraverse('@@images')
         return scales.scale('image', scale)
 
-    def description(self, obj):
-        """Return the description itens of the tile.
-
-        :param obj: [required]
-        :type obj: content type object
-        """
-        slide_num = self.results().index(obj) + 1
-        slide_count = len(self.results())
-        return {
-            'slide_num': slide_num,
-            'slide_count': slide_count,
-            'description': obj.Description() or obj.Title()
-        }
-
     def localized_time(self, obj, long_format=False):
         """Return the object time in a user-friendly way.
 

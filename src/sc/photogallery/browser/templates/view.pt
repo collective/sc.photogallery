@@ -50,12 +50,11 @@
                  data-allow-wrap="false"
                  data-cycle-fx="fade">
               <div tal:repeat="item view/results">
-                <tal:description define="desc python:view.description(item)">
-                  <div class="slide-pagination">
-                  <span class="slide-num" tal:content="string:${desc/slide_num}" /> | <span class="slide-count" tal:content="string:${desc/slide_count}" />
-                  </div>
-                  <div class="description" tal:content="desc/description"></div>
-                </tal:description>
+                <div class="slide-pagination">
+                  <span class="slide-num" tal:content="repeat/item/number" /> |
+                  <span class="slide-count" tal:content="repeat/item/length" />
+                </div>
+                <div class="description" tal:content="item/Description|item/Title"></div>
               </div>
             </div><!-- cycle-description -->
           </div><!-- slideshow-description -->
