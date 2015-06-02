@@ -47,7 +47,7 @@
             <div class="cycle-description cycle-slideshow"
                  data-cycle-slides="> div"
                  data-cycle-timeout="0"
-                 data-allow-wrap="true"
+                 data-allow-wrap="false"
                  data-cycle-fx="fade">
               <div tal:repeat="item view/results">
                 <tal:description define="desc python:view.description(item)">
@@ -68,7 +68,7 @@
                  data-cycle-carousel-fluid="true"
                  data-cycle-prev=".slideshow-player .cycle-prev"
                  data-cycle-next=".slideshow-player .cycle-next"
-                 data-allow-wrap="true">
+                 data-allow-wrap="false">
               <div class="thumb-itens"
                    tal:repeat="item view/results">
                 <tal:image define="thumbnail python:view.image(item, scale='thumb')"

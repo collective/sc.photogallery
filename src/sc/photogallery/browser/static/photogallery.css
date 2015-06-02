@@ -138,17 +138,32 @@ body.portaltype-photo-gallery a.cycle-prev,
 body.portaltype-photo-gallery a.cycle-next
 {
     position: absolute;
+    top: 0;
+}
+
+body.portaltype-photo-gallery a.cycle-prev span,
+body.portaltype-photo-gallery a.cycle-next span
+{
+    position: absolute;
     top: 50%;
 }
 
-body.portaltype-photo-gallery .cycle-prev,
 body.portaltype-photo-gallery .cycle-prev
+{
+    left: 0;
+}
+
+body.portaltype-photo-gallery .cycle-next
+{
+    right: 0;
+}
+
+body.portaltype-photo-gallery .cycle-prev span
 {
     left: 10px;
 }
 
-body.portaltype-photo-gallery .cycle-next,
-body.portaltype-photo-gallery .cycle-next
+body.portaltype-photo-gallery .cycle-next span
 {
     right: 10px;
 }

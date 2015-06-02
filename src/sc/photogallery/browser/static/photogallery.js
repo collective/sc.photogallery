@@ -12,14 +12,15 @@ var PhotoGallery = (function() {
   PhotoGallery.prototype.sync_slideshows = function(e, opts) {
     var $slideshows, self;
     self = e.data;
-    $slideshows = self.$('.cycle-slideshow', this);
-    $slideshows.not(this).cycle('goto', opts.currSlide - 1);
+    $description = self.$('.cycle-description', this);
+    $pager = self.$('.cycle-pager', this);
+    $description.cycle('goto', opts.currSlide);
+    $pager.cycle('goto', opts.currSlide -1);
   };
   PhotoGallery.prototype.thumbs_click = function(e) {
     var $slideshows, index, self;
     self = e.data;
     e.preventDefault();
-    $slideshow = self.$('.cycle-slideshow', this);
     $thumbs = self.$('.cycle-carrossel', this);
     index = $thumbs.data('cycle.API').getSlideIndex(this);
     $slideshows = self.$('.cycle-slideshow', this);
