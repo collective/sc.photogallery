@@ -6,7 +6,16 @@ from plone.browserlayer.utils import registered_layers
 
 import unittest
 
-CSS = '++resource++sc.photogallery/photogallery.css'
+JS = (
+    '++resource++collective.js.cycle2/jquery.cycle2.js',
+    '++resource++collective.js.cycle2/jquery.cycle2.carousel.js',
+    '++resource++collective.js.cycle2/jquery.cycle2.swipe.min.js',
+    '++resource++sc.photogallery/photogallery.js',
+)
+
+CSS = (
+    '++resource++sc.photogallery/photogallery.css',
+)
 
 
 class TestInstall(unittest.TestCase):
@@ -25,9 +34,15 @@ class TestInstall(unittest.TestCase):
     def test_browser_layer_installed(self):
         self.assertIn(IBrowserLayer, registered_layers())
 
+    def test_jsregistry(self):
+        js_resources = self.portal['portal_javascripts'].getResourceIds()
+        for id in JS:
+            self.assertIn(id, js_resources)
+
     def test_cssregistry(self):
-        resource_ids = self.portal.portal_css.getResourceIds()
-        self.assertIn(CSS, resource_ids)
+        css_resources = self.portal['portal_css'].getResourceIds()
+        for id in CSS:
+            self.assertIn(id, css_resources)
 
     def test_default_page_types(self):
         sprops = self.portal['portal_properties'].site_properties
@@ -57,9 +72,15 @@ class TestUninstall(unittest.TestCase):
     def test_browser_layer_removed_uninstalled(self):
         self.assertNotIn(IBrowserLayer, registered_layers())
 
-    def test_cssregistry_removed(self):
-        resource_ids = self.portal.portal_css.getResourceIds()
-        self.assertNotIn(CSS, resource_ids)
+    def test_jsregistry(self):
+        js_resources = self.portal['portal_javascripts'].getResourceIds()
+        for id in JS:
+            self.assertNotIn(id, js_resources)
+
+    def test_cssregistry(self):
+        css_resources = self.portal['portal_css'].getResourceIds()
+        for id in CSS:
+            self.assertNotIn(id, css_resources)
 
     def test_default_page_types_removed(self):
         sprops = self.portal['portal_properties'].site_properties
