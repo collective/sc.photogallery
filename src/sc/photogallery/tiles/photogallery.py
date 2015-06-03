@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-from sc.photogallery import _
 from collective.cover.tiles.base import IPersistentCoverTile
 from collective.cover.tiles.base import PersistentCoverTile
+from plone.app.uuid.utils import uuidToObject
+from plone.memoize import view
 from plone.tiles.interfaces import ITileDataManager
 from plone.uuid.interfaces import IUUID
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from sc.photogallery import _
 from zope import schema
 from zope.interface import implements
 
@@ -44,3 +46,24 @@ class PhotoGalleryTile(PersistentCoverTile):
             uuid = IUUID(obj)
             data_mgr = ITileDataManager(self)
             data_mgr.set(dict(uuid=uuid))
+
+    def is_empty(self):
+        return (self.data.get('uuid', None) is None or
+                uuidToObject(self.data.get('uuid')) is None)
+
+    @view.memoize
+    def results(self):
+        gallery = uuidToObject(self.data.get('uuid'))
+        return gallery.listFolderContents()
+
+    def image(self, obj, scale='large'):
+        """Return an image scale if the item has an image field.
+
+        :param obj: [required]
+        :type obj: content type object
+        :param scale: the scale to be used
+        :type scale: string
+        """
+
+        scales = obj.restrictedTraverse('@@images')
+        return scales.scale('image', scale)

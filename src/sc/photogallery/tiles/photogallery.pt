@@ -1,66 +1,87 @@
 <html
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:metal="http://xml.zope.org/namespaces/metal"
-    xmlns:tal="http://xml.zope.org/namespaces/tal"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="brasil2016.portal">
-
-<body tal:define="is_empty nocall:view/is_empty">
-  <p tal:condition="python:is_empty and view.is_compose_mode()">
-    Drag&amp;drop a Photo Gallery here.
-  </p>
-
-  <div tal:condition="not:is_empty" class="nitf-basic-tile tile-content"
-       tal:define="description view/data/description|nothing">
-    <tal:fields repeat="field view/get_configured_fields">
-      <tal:title condition="python:field['id'] == 'title'">
-        <h1 tal:replace="structure view/title_tag" />
-      </tal:title>
-
-      <tal:subtitle condition="python:field['id'] == 'subtitle'">
-        <p class="" tal:content="python:field['content']">Subtitle</p>
-      </tal:subtitle>
-
-      <div tal:condition="python:field['id'] == 'media_producer'">
-        <span tal:content="python:field['content']" />
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:metal="http://xml.zope.org/namespaces/metal"
+   xmlns:tal="http://xml.zope.org/namespaces/tal"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="brasil2016.portal">
+  <head>
+    <script type="text/javascript"
+            tal:define="portal_url context/@@plone_portal_state/portal_url"
+            tal:attributes="src string:${portal_url}/++resource++sc.photogallery/photogallery.js"></script>
+  </head>
+  <body tal:define="is_empty nocall:view/is_empty">
+    <p tal:condition="python:is_empty and view.is_compose_mode()">
+      Drag&amp;drop a Photo Gallery here.
+    </p>
+    <div tal:condition="not:is_empty" class="photogallery-tile tile-content"
+         tal:define="description view/data/description|nothing">
+      <div class="slideshow-container" tal:condition="not:is_empty">
+        <div class="slideshow-player">
+          <div class="cycle-player cycle-slideshow"
+               data-cycle-slides="> div"
+               data-cycle-timeout="0"
+               data-cycle-swipe="true"
+               data-cycle-prev=".slideshow-player .cycle-prev"
+               data-cycle-next=".slideshow-player .cycle-next"
+               data-allow-wrap="true"
+               data-cycle-fx="fade">
+            <div tal:repeat="item view/results">
+              <tal:image define="image python:view.image(item)">
+                <img tal:attributes="alt item/Title;
+                                     height image/height;
+                                     src image/url;
+                                     width image/width">
+              </tal:image>
+            </div>
+          </div><!-- cycle-player -->
+          <div class="cycle-nagivation">
+            <a href="#" class="cycle-prev"><span>&lang;</span></a>
+            <a href="#" class="cycle-next"><span>&rang;</span></a>
+          </div>
+        </div><!-- slideshow-player -->
+        <div class="slideshow-pager">
+          <div class="slideshow-description">
+            <div class="cycle-description cycle-slideshow"
+                 data-cycle-slides="> div"
+                 data-cycle-timeout="0"
+                 data-allow-wrap="false"
+                 data-cycle-fx="fade">
+              <div tal:repeat="item view/results">
+                <div class="slide-pagination">
+                  <span class="slide-num" tal:content="repeat/item/number" /> |
+                  <span class="slide-count" tal:content="repeat/item/length" />
+                </div>
+                <div class="description" tal:content="item/Description|item/Title"></div>
+              </div>
+            </div><!-- cycle-description -->
+          </div><!-- slideshow-description -->
+          <div class="slideshow-carrossel">
+            <div class="cycle-carrossel cycle-slideshow"
+                 data-cycle-slides="> div"
+                 data-cycle-timeout="0"
+                 data-cycle-fx="carousel"
+                 data-cycle-offset="1"
+                 data-cycle-carousel-fluid="true"
+                 data-cycle-prev=".slideshow-player .cycle-prev"
+                 data-cycle-next=".slideshow-player .cycle-next"
+                 data-allow-wrap="false">
+              <div class="thumb-itens"
+                   tal:repeat="item view/results">
+                <tal:image define="thumbnail python:view.image(item, scale='thumb')"
+                           condition="thumbnail">
+                  <img tal:attributes="alt item/Title;
+                                       height thumbnail/height;
+                                       src thumbnail/url;
+                                       width thumbnail/width">
+                </tal:image>
+              </div>
+            </div><!-- cycle-carrossel -->
+          </div><!-- slideshow-pager -->
+        </div><!-- slideshow-carrossel -->
       </div>
-
-      <tal:image
-          condition="python:field['id'] == 'image'"
-          define="scale python:field.get('scale', 'large');
-                  position python:field.get('position', '');">
-        <a class="imag" tal:attributes="href view/getURL;
-                                        title description;">
-          <img tal:define="scales view/@@images;
-                           thumbnail python: scales.scale('image', scale=scale);"
-               tal:condition="thumbnail"
-               tal:attributes="src thumbnail/url;
-                               width thumbnail/width;
-                               height thumbnail/height;
-                               class position;" />
-        </a>
-      </tal:image>
-
-      <tal:description condition="python:field['id'] == 'description'">
-        <p class="" tal:content="python:field['content']">Description</p>
-      </tal:description>
-
-      <tal:section condition="python:field['id'] == 'section'">
-        <p class="" tal:content="python:field['content']">Section</p>
-      </tal:section>
-
-      <tal:date condition="python:field['id'] == 'date'">
-        <p class="" tal:content="view/date">May 5</p>
-      </tal:date>
-
-      <tal:subjects condition="python:field['id'] == 'subjects'">
-        <span metal:use-macro="context/@@tile_macros/subjects" />
-      </tal:subjects>
-
-      <tal:last condition="repeat/field/end">
-        <div class="visualClear"><!-- --></div>
-      </tal:last>
-    </tal:fields>
-  </div>
-</body>
+      <div class="" tal:condition="is_empty" i18n:translate="">
+        The photo gallery has no images on it.
+      </div>
+    </div>
+  </body>
 </html>

@@ -49,7 +49,8 @@ class PhotoGalleryTileTestCase(TestTileMixin, unittest.TestCase):
 
         self.tile.populate_with_object(g1)
         rendered = self.tile()
-        self.assertIn(u'foo', rendered)
+        self.assertIn(u'slideshow-player', rendered)
+
 
 def test_suite():
     """Load tile tests only in Plone < 5.0."""
