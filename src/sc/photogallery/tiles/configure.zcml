@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="sc.photogallery">
+
+  <include package="plone.tiles" file="meta.zcml" />
+
+  <plone:tile
+      name="sc.photogallery"
+      title="Photo Gallery Tile"
+      description="A tile that shows a photogallery."
+      icon="++resource++sc.photogallery/tile-photogallery.png"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".photogallery.IPhotoGalleryTile"
+      class=".photogallery.PhotoGalleryTile"
+      permission="zope2.View"
+      for="*"
+      />
+
+</configure>

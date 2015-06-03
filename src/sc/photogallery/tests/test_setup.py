@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+from plone import api
+from plone.browserlayer.utils import registered_layers
 from sc.photogallery.config import PROJECTNAME
 from sc.photogallery.interfaces import IBrowserLayer
 from sc.photogallery.testing import INTEGRATION_TESTING
-from plone.browserlayer.utils import registered_layers
 
 import unittest
 
@@ -18,7 +19,7 @@ CSS = (
 )
 
 
-class TestInstall(unittest.TestCase):
+class InstallTestCase(unittest.TestCase):
 
     """Ensure product is properly installed."""
 
@@ -54,8 +55,12 @@ class TestInstall(unittest.TestCase):
         self.assertEqual(
             setup.getLastVersionForProfile(profile), (u'1001',))
 
+    def test_tile(self):
+        tiles = api.portal.get_registry_record('plone.app.tiles')
+        self.assertIn(u'sc.photogallery', tiles)
 
-class TestUninstall(unittest.TestCase):
+
+class UninstallTestCase(unittest.TestCase):
 
     """Ensure product is properly uninstalled."""
 
@@ -81,6 +86,10 @@ class TestUninstall(unittest.TestCase):
         css_resources = self.portal['portal_css'].getResourceIds()
         for id in CSS:
             self.assertNotIn(id, css_resources)
+
+    def test_tile_removed(self):
+        tiles = api.portal.get_registry_record('plone.app.tiles')
+        self.assertNotIn(u'sc.photogallery', tiles)
 
     def test_default_page_types_removed(self):
         sprops = self.portal['portal_properties'].site_properties

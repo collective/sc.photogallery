@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Prepare test fixtures; note that in Plone >= 5.0 we need to manually
+"""Setup of test for the package.
+
+Prepare test fixtures; note that in Plone >= 5.0 we need to manually
 install the desired content types.
+
+We install collective.cover to test the availibility and features of
+the tile included for that package.
 """
 from plone import api
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
@@ -31,6 +36,9 @@ class Fixture(PloneSandboxLayer):
         if PLONE_VERSION >= '5.0':
             import plone.app.contenttypes
             self.loadZCML(package=plone.app.contenttypes)
+        else:
+            import collective.cover
+            self.loadZCML(package=collective.cover)
 
         import sc.photogallery
         self.loadZCML(package=sc.photogallery)
@@ -38,6 +46,8 @@ class Fixture(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         if PLONE_VERSION >= '5.0':
             self.applyProfile(portal, 'plone.app.contenttypes:default')
+        else:
+            self.applyProfile(portal, 'collective.cover:default')
 
         self.applyProfile(portal, 'sc.photogallery:default')
 
