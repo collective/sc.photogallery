@@ -70,6 +70,7 @@ it is highly recommended that you register those resources to load them once and
 You can use a ``jsregistry.xml`` file that includes the following:
 
 .. code-block:: xml
+
     <javascript id="++resource++collective.js.cycle2/jquery.cycle2.min.js"
         cacheable="True" compression="none" cookable="True" enabled="True" />
     <javascript id="++resource++collective.js.cycle2/jquery.cycle2.carousel.min.js"

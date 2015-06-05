@@ -8,9 +8,9 @@ class PhotoGalleryMixin:
     """Common methods and functions used by views and and tiles."""
 
     def js_resources(self):
-        """Return a list of JS resource ids that are not available
-        in the registry, but are need to be loaded anyway. This way
-        the slideshow will resources registered globally.
+        """Return a list of JS resources that are not available in the
+        registry, but need to be loaded anyway. This way the slideshow
+        could use resources registered locally or globally.
 
         :returns: list of ids
         :rtype: list
