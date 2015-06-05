@@ -15,7 +15,8 @@
       Drag&amp;drop a Photo Gallery here.
     </p>
     <div tal:condition="not:is_empty" class="photogallery-tile tile-content"
-         tal:define="description view/data/description|nothing">
+         tal:define="description view/data/description|nothing"
+         tal:attributes="id string:photogallery-${view/id}">
       <div class="slideshow-container" tal:condition="not:is_empty">
         <div class="slideshow-player">
           <div class="cycle-player cycle-slideshow"
@@ -25,7 +26,9 @@
                data-cycle-prev=".slideshow-player .cycle-prev"
                data-cycle-next=".slideshow-player .cycle-next"
                data-allow-wrap="true"
-               data-cycle-fx="fade">
+               data-cycle-fx="fade"
+               tal:attributes="data-cycle-prev string:#photogallery-${view/id} .cycle-prev;
+                               data-cycle-next string:#photogallery-${view/id} .cycle-next">
             <div tal:repeat="item view/results">
               <tal:image define="image python:view.image(item)">
                 <img tal:attributes="alt item/Title;
