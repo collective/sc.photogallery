@@ -46,10 +46,14 @@ class PhotoGalleryTileTestCase(TestTileMixin, unittest.TestCase):
         with api.env.adopt_roles(['Manager']):
             g1 = api.content.create(
                 self.portal, 'Photo Gallery', 'g1')
-
         self.tile.populate_with_object(g1)
+        self.assertIn(u'slideshow-player', self.tile())
+
+    def test_render_js_resources(self):
+        from sc.photogallery.config import JS_RESOURCES
         rendered = self.tile()
-        self.assertIn(u'slideshow-player', rendered)
+        for js in JS_RESOURCES:
+            self.assertIn(js, rendered)
 
 
 def test_suite():

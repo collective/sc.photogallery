@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from plone.dexterity.browser.view import DefaultView
-from plone.memoize import view
+from plone.memoize.instance import memoizedproperty
+from sc.photogallery.utils import PhotoGalleryMixin
 
 
-class View(DefaultView):
+class View(DefaultView, PhotoGalleryMixin):
 
     """Slideshow view for Photo Gallery content type."""
 
-    @view.memoize
+    @memoizedproperty
     def results(self):
         return self.context.listFolderContents()
 
-    @property
-    @view.memoize
+    @memoizedproperty
     def is_empty(self):
-        return len(self.results()) == 0
+        return len(self.results) == 0
 
     def image(self, obj, scale='large'):
         """Return an image scale if the item has an image field.

@@ -62,9 +62,28 @@ TBD.
 Internals
 ---------
 
-``Photo Gallery`` uses Cycle2 slideshow plugin for jQuery.
+``Photo Gallery`` uses Cycle2 slideshow plugin for jQuery and it can load its resources from the Plone JS registry if they are present there.
+
+If you're using ``Photo Gallery`` with other packages that use Cycle2 also (like `collective.nitf`_ or `covertile.cycle2`_),
+it is highly recommended that you register those resources to load them once and avoid conflicts.
+
+You can use a ``jsregistry.xml`` file that includes the following:
+
+.. code-block:: xml
+    <javascript id="++resource++collective.js.cycle2/jquery.cycle2.min.js"
+        cacheable="True" compression="none" cookable="True" enabled="True" />
+    <javascript id="++resource++collective.js.cycle2/jquery.cycle2.carousel.min.js"
+        cacheable="True" compression="none" cookable="True" enabled="True" />
+    <javascript id="++resource++collective.js.cycle2/jquery.cycle2.swipe.min.js"
+        cacheable="True" compression="none" cookable="True" enabled="True" />
+
+.. _`collective.nitf`: https://pypi.python.org/pypi/collective.nitf
+.. _`covertile.cycle2`: https://pypi.python.org/pypi/covertile.cycle2
 
 Not entirely unlike
 ===================
 
-TBD.
+`collective.plonetruegallery`_
+    A gallery/slideshow product for Plone that can aggregate from Picasa and Flickr or use Plone images.
+
+.. _`collective.plonetruegallery`: https://pypi.python.org/pypi/collective.plonetruegallery
