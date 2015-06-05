@@ -8,9 +8,6 @@ from sc.photogallery.testing import INTEGRATION_TESTING
 import unittest
 
 JS = (
-    '++resource++collective.js.cycle2/jquery.cycle2.js',
-    '++resource++collective.js.cycle2/jquery.cycle2.carousel.js',
-    '++resource++collective.js.cycle2/jquery.cycle2.swipe.min.js',
     '++resource++sc.photogallery/photogallery.js',
 )
 
