@@ -3,7 +3,9 @@ Share and Enjoy
 
 `sc.photogallery` would not have been possible without the contribution of the following people:
 
+- André Nogueira
 - Héctor Velarde
+- Rodrigo Ferreira de Souza
 - `Cycle2 slideshow plugin for jQuery`_
 - Font Awesome (`icon`_)
 
