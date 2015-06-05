@@ -5,9 +5,9 @@ Share and Enjoy
 
 - Héctor Velarde
 - `Cycle2 slideshow plugin for jQuery`_
-- `Tango! Desktop Project`_ (image)
+- Font Awesome (`icon`_)
 
 Development sponsored by Simples Consultoria.
 
 .. _`Cycle2 slideshow plugin for jQuery`: http://jquery.malsup.com/cycle2/
-.. _`Tango! Desktop Project`: http://tango.freedesktop.org/Tango_Desktop_Project
+.. _`icon`: http://fontawesome.io/icon/picture-o/
