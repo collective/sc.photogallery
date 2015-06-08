@@ -53,8 +53,12 @@ class PhotoGalleryTile(PersistentCoverTile, PhotoGalleryMixin):
                 uuidToObject(self.data.get('uuid')) is None)
 
     @view.memoize
+    def gallery(self):
+        return uuidToObject(self.data.get('uuid'))
+
+    @view.memoize
     def results(self):
-        gallery = uuidToObject(self.data.get('uuid'))
+        gallery = self.gallery()
         return gallery.listFolderContents()
 
     def image(self, obj, scale='large'):

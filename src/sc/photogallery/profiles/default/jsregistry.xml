@@ -2,7 +2,6 @@
 <object name="portal_javascripts" purge="False">
   <javascript id="++resource++sc.photogallery/photogallery.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
-      inline="False" authenticated="False"
-      expression="python:getattr(context, 'portal_type', '') == 'Photo Gallery'"
+      inline="False" authenticated="False" expression=""
       insert-after="*" />
 </object>

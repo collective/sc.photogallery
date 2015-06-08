@@ -7,13 +7,35 @@ body.portaltype-photo-gallery .slideshow-container,
 }
 
 body.portaltype-photo-gallery .slideshow-description,
-body.portaltype-photo-gallery .slideshow-carrossel,
+body.portaltype-photo-gallery .slideshow-carrossel
+{
+    float: left;
+
+    width: 50%;
+}
+
 .photogallery-tile .slideshow-description,
 .photogallery-tile .slideshow-carrossel
 {
     float: left;
 
-    width: 50%;
+    width: 45%;
+}
+
+.photogallery-tile .photogallery-url
+{
+    font-weight: bold;
+
+    display: block;
+    float: left;
+
+    width: 10%;
+    padding: 6px 0;
+
+    text-align: center;
+
+    color: white;
+    background-color: #0094cc;
 }
 
 body.portaltype-photo-gallery .cycle-slideshow,

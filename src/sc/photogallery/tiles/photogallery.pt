@@ -80,6 +80,12 @@
               </div>
             </div><!-- cycle-carrossel -->
           </div><!-- slideshow-pager -->
+          <a class="photogallery-url"
+             tal:define="gallery view/gallery"
+             tal:attributes="href gallery/absolute_url"
+             i18n:translate="">
+              Go to photogallery
+          </a>
         </div><!-- slideshow-carrossel -->
       </div>
       <div class="" tal:condition="is_empty" i18n:translate="">
