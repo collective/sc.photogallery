@@ -44,7 +44,7 @@
               </tal:image>
             </div>
           </div><!-- cycle-player -->
-          <div class="cycle-nagivation">
+          <div class="cycle-navigation">
             <a href="#" class="cycle-prev"><span>&lang;</span></a>
             <a href="#" class="cycle-next"><span>&rang;</span></a>
           </div>
