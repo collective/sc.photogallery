@@ -71,7 +71,7 @@ body.portaltype-photo-gallery .cycle-slideshow img,
     display: block;
 
     width: auto;
-    max-width: 100%;
+    max-width: 768px;
     height: auto;
     max-height: 100%;
     padding: 0;
