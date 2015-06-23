@@ -61,8 +61,8 @@ body.portaltype-photo-gallery .cycle-slideshow,
     background: #f1f1f1;
 }
 
-body.portaltype-photo-gallery .cycle-slideshow img,
-.photogallery-tile .cycle-slideshow img
+body.portaltype-photo-gallery .cycle-player img,
+.photogallery-tile .cycle-player img
 {
     position: absolute;
     top: 0;
@@ -70,11 +70,25 @@ body.portaltype-photo-gallery .cycle-slideshow img,
 
     display: block;
 
-    width: auto;
+    width: 100%;
     max-width: 100%;
     height: auto;
     max-height: 100%;
     padding: 0;
+    margin: 0 auto;
+}
+
+body.portaltype-photo-gallery .cycle-player .cycle-slide,
+.photogallery-tile .cycle-player .cycle-slide
+{
+    width: 100%;
+}
+
+body.portaltype-photo-gallery .thumb-itens img,
+.photogallery-tile .thumb-itens img {
+    max-height: 50px;
+    width: auto;
+    margin-right: 5px;
 }
 
 body.portaltype-photo-gallery .cycle-slideshow img:first-child,

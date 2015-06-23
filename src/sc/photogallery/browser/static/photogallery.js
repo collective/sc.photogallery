@@ -3,6 +3,12 @@ var PhotoGallery = (function() {
     var self = this;
     $('.slideshow-container .cycle-player').on('cycle-next cycle-prev', self, self.sync_slideshows);
     $('.slideshow-container .cycle-carrossel .thumb-itens').on('click', self, self.thumbs_click);
+    $('.slideshow-container .cycle-player img').each(function() {
+      var $img = $(this);
+      if ($img.height() > $img.width()) {
+        $img.css('width', 'auto');
+      }
+    });
   }
   PhotoGallery.prototype.$ = function(selector, context) {
     var $container;

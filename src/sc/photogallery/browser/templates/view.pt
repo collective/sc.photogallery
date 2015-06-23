@@ -34,7 +34,8 @@
                data-cycle-prev=".slideshow-player .cycle-prev"
                data-cycle-next=".slideshow-player .cycle-next"
                data-allow-wrap="true"
-               data-cycle-fx="fade">
+               data-cycle-fx="fade"
+               data-cycle-log="false">
             <div tal:repeat="item view/results">
               <tal:image define="image python:view.image(item)">
                 <img tal:attributes="alt item/Title;
@@ -55,7 +56,8 @@
                  data-cycle-slides="> div"
                  data-cycle-timeout="0"
                  data-allow-wrap="false"
-                 data-cycle-fx="fade">
+                 data-cycle-fx="fade"
+                 data-cycle-log="false">
               <div tal:repeat="item view/results">
                 <div class="slide-pagination">
                   <span class="slide-num" tal:content="repeat/item/number" /> |
@@ -74,7 +76,8 @@
                  data-cycle-carousel-fluid="true"
                  data-cycle-prev=".slideshow-player .cycle-prev"
                  data-cycle-next=".slideshow-player .cycle-next"
-                 data-allow-wrap="false">
+                 data-allow-wrap="false"
+                 data-cycle-log="false">
               <div class="thumb-itens"
                    tal:repeat="item view/results">
                 <tal:image define="thumbnail python:view.image(item, scale='thumb')"
