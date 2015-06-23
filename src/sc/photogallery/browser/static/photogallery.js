@@ -6,7 +6,9 @@ var PhotoGallery = (function() {
     $('.slideshow-container .cycle-player img').each(function() {
       var $img = $(this);
       if ($img.height() > $img.width()) {
+        var $player = $img.parent().parent();
         $img.css('width', 'auto');
+        $img.height($player.height());
       }
     });
   }
