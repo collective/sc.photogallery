@@ -84,11 +84,16 @@ body.portaltype-photo-gallery .cycle-player .cycle-slide,
     width: 100%;
 }
 
+body.portaltype-photo-gallery .thumb-itens,
+.photogallery-tile .thumb-itens {
+    max-height: 50px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
 body.portaltype-photo-gallery .thumb-itens img,
 .photogallery-tile .thumb-itens img {
-    max-height: 50px;
-    width: auto;
-    margin-right: 5px;
+    width: 96px;
 }
 
 body.portaltype-photo-gallery .cycle-slideshow img:first-child,
