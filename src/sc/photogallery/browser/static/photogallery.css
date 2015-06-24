@@ -89,6 +89,7 @@ body.portaltype-photo-gallery .thumb-itens,
     max-height: 50px;
     overflow: hidden;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 body.portaltype-photo-gallery .thumb-itens img,
