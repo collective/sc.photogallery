@@ -16,7 +16,7 @@ var PhotoGallery = (function() {
     self.$('.cycle-carrossel .thumb-itens').on('click', self, self.thumbs_click);
   };
   PhotoGallery.prototype.fix_image_size = function() {
-    var self, max_height, max_width, i, len, ref, $player;
+    var self, max_height, max_width, i, len, ref, img, $player, $img;
     self = this;
 
     // Calc max_with and max_height
@@ -48,7 +48,7 @@ var PhotoGallery = (function() {
   };
 
   PhotoGallery.prototype.thumbs_click = function(e) {
-    var self, index, $slideshows;
+    var self, index, $thumbs, $slideshows;
     self = e.data;
     e.preventDefault();
     $thumbs = self.$('.cycle-carrossel');
