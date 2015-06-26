@@ -12,17 +12,14 @@ A Photo Gallery content type with a slideshow view.
 Mostly Harmless
 ===============
 
-.. image:: https://secure.travis-ci.org/simplesconsultoria/sc.photogallery.png?branch=master
-    :alt: Travis CI badge
+.. image:: http://img.shields.io/pypi/v/sc.photogallery.svg
+    :target: https://pypi.python.org/pypi/sc.photogallery
+
+.. image:: https://img.shields.io/travis/simplesconsultoria/sc.photogallery/master.svg
     :target: http://travis-ci.org/simplesconsultoria/sc.photogallery
 
-.. image:: https://coveralls.io/repos/simplesconsultoria/sc.photogallery/badge.png?branch=master
-    :alt: Coveralls badge
+.. image:: https://img.shields.io/coveralls/simplesconsultoria/sc.photogallery/master.svg
     :target: https://coveralls.io/r/simplesconsultoria/sc.photogallery
-
-.. image:: https://pypip.in/d/sc.photogallery/badge.png
-    :target: https://pypi.python.org/pypi/sc.photogallery/
-    :alt: Downloads
 
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
