@@ -9,6 +9,9 @@ class View(DefaultView, PhotoGalleryMixin):
 
     """Slideshow view for Photo Gallery content type."""
 
+    def id(self):
+        return id(self)
+
     @memoizedproperty
     def results(self):
         return self.context.listFolderContents()

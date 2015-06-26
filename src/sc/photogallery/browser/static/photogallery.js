@@ -1,41 +1,68 @@
 var PhotoGallery = (function() {
-  function PhotoGallery() {
+  function PhotoGallery(el) {
     var self = this;
-    $('.slideshow-container .cycle-player').on('cycle-next cycle-prev', self, self.sync_slideshows);
-    $('.slideshow-container .cycle-carrossel .thumb-itens').on('click', self, self.thumbs_click);
-    $('.slideshow-container .cycle-player img').each(function() {
-      var $img = $(this);
-      if ($img.height() > $img.width()) {
-        var $player = $img.parent().parent();
-        $img.css('width', 'auto');
-        $img.height($player.height());
-      }
-    });
+    self.$el = $(el);
+    self.proportion = 3 / 2;
+    self.bind_events();
+    self.fix_image_size();
   }
-  PhotoGallery.prototype.$ = function(selector, context) {
-    var $container;
-    $container = $(context).closest('.slideshow-container');
-    return $(selector, $container);
+  PhotoGallery.prototype.$ = function(selector) {
+    var self = this;
+    return $(selector, self.$el);
   };
+  PhotoGallery.prototype.bind_events = function() {
+    var self = this;
+    self.$('.cycle-player').on('cycle-next cycle-prev', self, self.sync_slideshows);
+    self.$('.cycle-carrossel .thumb-itens').on('click', self, self.thumbs_click);
+  };
+  PhotoGallery.prototype.fix_image_size = function() {
+    var self, max_height, max_width, i, len, ref, $player;
+    self = this;
+
+    // Calc max_with and max_height
+    $player = self.$('.cycle-player');
+    max_width = $player.width();
+    max_height = max_width / self.proportion;
+    // Calc max_with and max_height
+
+    // Update properties when necessary
+    ref = self.$('.cycle-player img');
+    for (i = 0, len = ref.length; i < len; i++) {
+      img = ref[i];
+      $img = $(img);
+      if ($img.height() > $img.width()) {
+        $img.css('width', 'auto');
+        $img.height(max_height);
+      } else {
+        $img.width(max_width);
+        $img.height(max_height);
+      }
+    }
+  };
+
   PhotoGallery.prototype.sync_slideshows = function(e, opts) {
-    var $description, $pager, self;
+    var self, index, $player, $slideshows;
     self = e.data;
-    $description = self.$('.cycle-description', this);
-    $pager = self.$('.cycle-pager', this);
-    $description.cycle('goto', opts.currSlide);
-    $pager.cycle('goto', opts.currSlide -1); // this is weird
+    $slideshows = self.$('.cycle-slideshow');
+    $slideshows.cycle('goto', opts.currSlide);
   };
+
   PhotoGallery.prototype.thumbs_click = function(e) {
-    var $slideshows, index, self;
+    var self, index, $slideshows;
     self = e.data;
     e.preventDefault();
-    $thumbs = self.$('.cycle-carrossel', this);
+    $thumbs = self.$('.cycle-carrossel');
     index = $thumbs.data('cycle.API').getSlideIndex(this);
-    $slideshows = self.$('.cycle-slideshow', this);
+    $slideshows = self.$('.cycle-slideshow');
     $slideshows.cycle('goto', index);
   };
   return PhotoGallery;
 })();
 $(window).load(function() {
-  return new PhotoGallery();
+  var i, len, ref, slideshow;
+  ref = $('.slideshow-container');
+  for (i = 0, len = ref.length; i < len; i++) {
+    slideshow = ref[i];
+    new PhotoGallery(slideshow);
+  }
 });

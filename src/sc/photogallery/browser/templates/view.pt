@@ -25,17 +25,19 @@
           <div tal:content="structure text">The body</div>
         </div>
       </tal:text>
-      <div class="slideshow-container" tal:condition="not:is_empty">
+      <div class="slideshow-container"
+           tal:condition="not:is_empty"
+           tal:attributes="id string:photogallery-${view/id}">
         <div class="slideshow-player">
           <div class="cycle-player cycle-slideshow"
                data-cycle-slides="> div"
                data-cycle-timeout="0"
                data-cycle-swipe="true"
-               data-cycle-prev=".slideshow-player .cycle-prev"
-               data-cycle-next=".slideshow-player .cycle-next"
                data-allow-wrap="true"
                data-cycle-fx="fade"
-               data-cycle-log="false">
+               data-cycle-log="false"
+               tal:attributes="data-cycle-prev string:#photogallery-${view/id} .cycle-prev;
+                               data-cycle-next string:#photogallery-${view/id} .cycle-next">
             <div tal:repeat="item view/results">
               <tal:image define="image python:view.image(item)">
                 <img tal:attributes="alt item/Title;
@@ -55,7 +57,7 @@
             <div class="cycle-description cycle-slideshow"
                  data-cycle-slides="> div"
                  data-cycle-timeout="0"
-                 data-allow-wrap="false"
+                 data-allow-wrap="true"
                  data-cycle-fx="fade"
                  data-cycle-log="false">
               <div tal:repeat="item view/results">
@@ -69,13 +71,10 @@
           </div><!-- slideshow-description -->
           <div class="slideshow-carrossel">
             <div class="cycle-carrossel cycle-slideshow"
+                 data-cycle-fx="carousel"
                  data-cycle-slides="> div"
                  data-cycle-timeout="0"
-                 data-cycle-fx="carousel"
-                 data-cycle-offset="1"
                  data-cycle-carousel-fluid="true"
-                 data-cycle-prev=".slideshow-player .cycle-prev"
-                 data-cycle-next=".slideshow-player .cycle-next"
                  data-allow-wrap="false"
                  data-cycle-log="false">
               <div class="thumb-itens"
