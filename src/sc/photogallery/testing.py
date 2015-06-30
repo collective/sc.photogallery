@@ -14,8 +14,20 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
+from sc.photogallery.config import HAS_ZIPEXPORT
+
+import os
+import shutil
+
 
 PLONE_VERSION = api.env.plone_version()
+IMAGES = [
+    '640px-Mandel_zoom_00_mandelbrot_set.jpg',
+    '640px-Mandel_zoom_04_seehorse_tail.jpg',
+    '640px-Mandel_zoom_06_double_hook.jpg',
+    '640px-Mandel_zoom_07_satellite.jpg',
+    '640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg'
+]
 
 
 def turn_off_referenceablebehavior():
@@ -40,6 +52,13 @@ class Fixture(PloneSandboxLayer):
             import collective.cover
             self.loadZCML(package=collective.cover)
 
+        if HAS_ZIPEXPORT:
+            import ftw.zipexport
+            self.loadZCML(package=ftw.zipexport)
+
+        import collective.js.cycle2
+        self.loadZCML(package=collective.js.cycle2)
+
         import sc.photogallery
         self.loadZCML(package=sc.photogallery)
 
@@ -49,10 +68,21 @@ class Fixture(PloneSandboxLayer):
         else:
             self.applyProfile(portal, 'collective.cover:default')
 
+        if HAS_ZIPEXPORT:
+            self.applyProfile(portal, 'ftw.zipexport:default')
+
+        self.applyProfile(portal, 'collective.js.cycle2:default')
+
         self.applyProfile(portal, 'sc.photogallery:default')
 
         if PLONE_VERSION >= '5.0':
             turn_off_referenceablebehavior()
+
+        current_dir = os.path.abspath(os.path.dirname(__file__))
+        for img in IMAGES:
+            img_path = os.path.join(current_dir, 'tests', img)
+            shutil.copy2(img_path, '/tmp')
+
 
 FIXTURE = Fixture()
 

@@ -88,8 +88,36 @@
                 </tal:image>
               </div>
             </div><!-- cycle-carrossel -->
-          </div><!-- slideshow-pager -->
-        </div><!-- slideshow-carrossel -->
+          </div><!-- slideshow-carrossel -->
+          <tal:download condition="view/can_download">
+            <div class="slideshow-download">
+              <div class="cycle-download cycle-slideshow"
+                   data-cycle-slides="> div"
+                   data-cycle-timeout="0"
+                   data-cycle-fx="fade"
+                   data-cycle-log="false">
+                <div tal:repeat="item view/results">
+                  <a class="download"
+                     tal:attributes="href string:${item/absolute_url}/download">
+                    <span>Download Image</span>
+                    <span class="size"
+                          tal:content="python:view.img_size(item)">
+                    </span>
+                  </a>
+                </div>
+              </div><!-- cycle-download -->
+            </div><!-- slideshow-download -->
+            <tal:zip condition="view/can_zipexport">
+              <a class="download album"
+                 tal:attributes="href view/zip_url">
+                <span>Download Photogallery</span>
+                <span class="size"
+                      tal:content="string:.zip - ${view/zip_size}">
+                </span>
+              </a>
+            </tal:zip>
+          </tal:download>
+        </div><!-- slideshow-pager -->
       </div>
       <div class="" tal:condition="is_empty" i18n:translate="">
         The photo gallery has no images on it.

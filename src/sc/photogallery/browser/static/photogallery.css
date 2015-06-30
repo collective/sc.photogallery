@@ -22,6 +22,12 @@ body.portaltype-photo-gallery .slideshow-carrossel
     width: 45%;
 }
 
+body.portaltype-photo-gallery .slideshow-download,
+.photogallery-tile .slideshow-download
+{
+    float: left;
+}
+
 .photogallery-tile .photogallery-url
 {
     font-weight: bold;
