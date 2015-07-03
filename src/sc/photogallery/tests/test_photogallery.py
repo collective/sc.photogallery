@@ -3,6 +3,7 @@ from plone import api
 from plone.app.dexterity.behaviors.exclfromnav import IExcludeFromNavigation
 from plone.app.referenceablebehavior.referenceable import IReferenceable
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.namedfile.tests.test_image import zptlogo
 from plone.uuid.interfaces import IAttributeUUID
 from sc.photogallery.interfaces import IPhotoGallery
 from sc.photogallery.testing import INTEGRATION_TESTING
@@ -59,3 +60,22 @@ class PhotoGalleryTestCase(unittest.TestCase):
     def test_selectable_as_folder_default_page(self):
         self.folder.setDefaultPage('gallery')
         self.assertEqual(self.folder.getDefaultPage(), 'gallery')
+
+    def test_image(self):
+        self.assertIsNone(self.gallery.image())
+        # TODO: handle Dexterity-based Image
+        api.content.create(self.gallery, 'Image', 'foo', image=zptlogo)
+        self.assertEqual(self.gallery.image().data, zptlogo)
+
+    def test_image_caption(self):
+        self.assertEqual(self.gallery.image_caption(), u'')
+        api.content.create(
+            self.gallery, 'Image', 'foo', description=u'Foo')
+        self.assertEqual(self.gallery.image_caption(), u'Foo')
+
+    def test_tag(self):
+        self.assertIsNone(self.gallery.tag())
+        # TODO: handle Dexterity-based Image
+        api.content.create(self.gallery, 'Image', 'foo', image=zptlogo)
+        self.assertIn(
+            'http://nohost/plone/test/gallery/foo/image', self.gallery.tag())

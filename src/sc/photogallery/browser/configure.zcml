@@ -15,4 +15,13 @@
       layer="sc.photogallery.interfaces.IBrowserLayer"
       />
 
+  <!-- XXX: compatibility with summary_view in collections -->
+  <browser:page
+      for="sc.photogallery.content.PhotoGallery"
+      name="images"
+      class=".scaling.ImageScaling"
+      allowed_interface="plone.app.imaging.interfaces.IImageScaling"
+      permission="zope2.View"
+      />
+
 </configure>

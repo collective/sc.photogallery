@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Implement lead image to be used in folder and collection views (closes `#17`_).
+  [hvelarde]
+
 - Load Cycle2 resources from the JS registry if available (closes `#10`_).
   [hvelarde]
 
@@ -34,3 +37,4 @@ There's a frood who really knows where his towel is.
 .. _`#4`: https://github.com/simplesconsultoria/sc.photogallery/issues/4
 .. _`#7`: https://github.com/simplesconsultoria/sc.photogallery/issues/7
 .. _`#10`: https://github.com/simplesconsultoria/sc.photogallery/issues/10
+.. _`#17`: https://github.com/simplesconsultoria/sc.photogallery/issues/17
