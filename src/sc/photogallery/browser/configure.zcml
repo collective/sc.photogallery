@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="sc.photogallery">
 
   <browser:resourceDirectory name="sc.photogallery" directory="static" />
@@ -22,7 +23,7 @@
       layer="sc.photogallery.interfaces.IBrowserLayer"
       />
 
-  <browser:page
+  <browser:page zcml:condition="installed ftw.zipexport"
       for="sc.photogallery.content.PhotoGallery"
       name="zip"
       class=".ZipView"
