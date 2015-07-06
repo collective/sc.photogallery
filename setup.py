@@ -65,6 +65,9 @@ setup(
             'robotsuite',
             'zope.component',
         ],
+        'zipexport': [
+            'ftw.zipexport',
+        ],
     },
     entry_points="""
     [z3c.autoinclude.plugin]
