@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Products.statusmessages.interfaces import IStatusMessage
+from plone import api
 from sc.photogallery import _
 from sc.photogallery.config import HAS_ZIPEXPORT
 from sc.photogallery.browser.view import last_modified
@@ -61,12 +61,8 @@ class ZipView(BrowserPage):
                     generator.add_file(path, pointer)
             # check if zip has files
             if generator.is_empty:
-                messages = IStatusMessage(self.request)
-                messages.add(
-                    _('statmsg_content_not_supported',
-                      default=u'Zip export is not supported on the selected content.'),
-                    type=u'error'
-                )
+                message = _(u'Zip export is not supported on the selected content.')
+                api.portal.show_message(message, self.request, type=u'error')
                 self.request.response.redirect(self.context.absolute_url())
                 return
 
@@ -85,10 +81,7 @@ class ZipView(BrowserPage):
         if HAS_ZIPEXPORT and filename:
             return self.zip_selected([self.context])
         else:
-            messages = IStatusMessage(self.request)
-            messages.add(
-                _(u'Not supported operation'),
-                type=u'error'
-            )
+            message = _(u'Operation not supported')
+            api.portal.show_message(message, self.request, type=u'error')
             self.request.response.redirect(self.context.absolute_url())
             return
