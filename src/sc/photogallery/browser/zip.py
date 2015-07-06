@@ -33,6 +33,7 @@ class ZipView(BrowserPage):
     def _subpath(self):
         return getattr(self, 'traverse_subpath', [])
 
+    @property
     def last_modified(self):
         return last_modified(self.context)
 
@@ -40,11 +41,10 @@ class ZipView(BrowserPage):
     def filename(self):
         base_url = self.context.absolute_url()
         subpath = self._subpath()
-        last_modified = self.last_modified()
+        last_modified = self.last_modified
         if not ((len(subpath) > 1) and (str(last_modified) == subpath[0])):
-            url = '%s/@@zip/%s/%s.zip' % (base_url,
-                                          str(last_modified),
-                                          self.context.getId())
+            url = '{0}/@@zip/{1}/{2}.zip'.format(
+                base_url, str(last_modified), self.context.getId())
             return self.request.response.redirect(url)
         filename = subpath[1].encode('utf-8')
         return filename

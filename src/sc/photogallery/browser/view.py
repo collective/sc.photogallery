@@ -28,7 +28,7 @@ class View(DefaultView, PhotoGalleryMixin):
     def results(self):
         return self.context.listFolderContents()
 
-    @memoizedproperty
+    @property
     def is_empty(self):
         return len(self.results) == 0
 
@@ -53,6 +53,7 @@ class View(DefaultView, PhotoGalleryMixin):
         """
         return api.portal.get_localized_time(obj.Date(), long_format)
 
+    @property
     def can_download(self):
         download = False
         try:
@@ -66,18 +67,18 @@ class View(DefaultView, PhotoGalleryMixin):
     def img_size(self, item):
         return '{0:.1f} MB'.format(item.size() / float(1024 * 1024))
 
+    @property
     def can_zipexport(self):
         return HAS_ZIPEXPORT
 
+    @property
     def last_modified(self):
         return last_modified(self.context)
 
     def zip_url(self):
-        last_modified = self.last_modified()
         base_url = self.context.absolute_url()
-        url = '%s/@@zip/%s/%s.zip' % (base_url,
-                                      str(last_modified),
-                                      self.context.getId())
+        url = '{0}/@@zip/{1}/{2}.zip'.format(
+            base_url, str(self.last_modified), self.context.getId())
         return url
 
     @forever.memoize
@@ -95,5 +96,4 @@ class View(DefaultView, PhotoGalleryMixin):
             return '{0:.1f} MB'.format(size / float(1024 * 1024))
 
     def zip_size(self):
-        last_modified = self.last_modified()
-        return self._zip_size(last_modified)
+        return self._zip_size(self.last_modified)
