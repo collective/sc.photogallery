@@ -82,11 +82,9 @@ class ViewTestCase(unittest.TestCase):
             url.format(self.view.last_modified)
         )
 
+    @unittest.skipUnless(HAS_ZIPEXPORT, 'requires ftw.zipexport')
     def test_zip_size(self):
-        if HAS_ZIPEXPORT:
-            self.assertEqual(self.view._zip_size(), '0.4 MB')
-        else:
-            self.assertEqual(self.view._zip_size(), '0.0 MB')
+        self.assertEqual(self.view._zip_size(), '0.4 MB')
 
 
 class ZipViewTestCase(unittest.TestCase):
@@ -135,22 +133,20 @@ class ZipViewTestCase(unittest.TestCase):
             filename.format(self.view.last_modified)
         )
 
+    @unittest.skipUnless(HAS_ZIPEXPORT, 'requires ftw.zipexport')
     def test_zip_selected(self):
-        if HAS_ZIPEXPORT:
-            self.view.zip_selected([self.gallery])
-            response = self.request.response
-            disposition = (
-                'inline; filename="http://nohost/plone/'
-                'my-photo-gallery/@@zip/{0}/my-photo-gallery.zip"'
-            )
-            self.assertEqual(
-                response.getHeader('Content-Disposition'),
-                disposition.format(self.view.last_modified)
-            )
-            self.assertEqual(response.getHeader('Content-type'), 'application/zip')
-            self.assertEqual(response.getHeader('Content-Length'), '419293')
+        self.view.zip_selected([self.gallery])
+        response = self.request.response
+        disposition = (
+            'inline; filename="http://nohost/plone/'
+            'my-photo-gallery/@@zip/{0}/my-photo-gallery.zip"'
+        )
+        self.assertEqual(
+            response.getHeader('Content-Disposition'),
+            disposition.format(self.view.last_modified)
+        )
+        self.assertEqual(response.getHeader('Content-type'), 'application/zip')
+        self.assertEqual(response.getHeader('Content-Length'), '419293')
 
-            self.view.zip_selected([self.gallery, self.gallery])
-            self.assertEqual(response.getHeader('Content-Length'), '838574')
-        else:
-            self.assertIsNone(self.view.zip_selected([self.gallery]))
+        self.view.zip_selected([self.gallery, self.gallery])
+        self.assertEqual(response.getHeader('Content-Length'), '838574')
