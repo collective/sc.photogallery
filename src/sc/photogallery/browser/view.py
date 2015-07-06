@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from plone import api
-from plone.api.exc import InvalidParameterError
 from plone.dexterity.browser.view import DefaultView
 from plone.memoize import forever
 from plone.memoize.instance import memoizedproperty
@@ -55,13 +54,8 @@ class View(DefaultView, PhotoGalleryMixin):
 
     @property
     def can_download(self):
-        download = False
-        try:
-            record = IPhotoGallerySettings.__identifier__ + '.download'
-            download = api.portal.get_registry_record(record)
-        except InvalidParameterError:
-            pass
-
+        record = IPhotoGallerySettings.__identifier__ + '.download'
+        download = api.portal.get_registry_record(record)
         return download
 
     def img_size(self, item):
