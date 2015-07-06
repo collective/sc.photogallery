@@ -54,9 +54,9 @@ class View(DefaultView, PhotoGalleryMixin):
 
     @property
     def can_download(self):
-        record = IPhotoGallerySettings.__identifier__ + '.download'
-        download = api.portal.get_registry_record(record)
-        return download
+        record = IPhotoGallerySettings.__identifier__ + '.enable_download'
+        enabled = api.portal.get_registry_record(record)
+        return enabled
 
     def img_size(self, item):
         return '{0:.1f} MB'.format(item.size() / float(1024 * 1024))

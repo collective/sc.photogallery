@@ -25,11 +25,11 @@ class IPhotoGallerySettings(form.Schema):
 
     """Schema for the control panel form."""
 
-    download = schema.Bool(
+    enable_download = schema.Bool(
         title=_(u'Enable download?'),
         description=_(
-            u'Enable option to render download section of the image '
-            u'(if ftw.zipexport present has option to download the entire gallery zipped).'
+            u'Enable download of individual original images in the Photo Gallery. '
+            u'If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images.'
         ),
         default=False
     )

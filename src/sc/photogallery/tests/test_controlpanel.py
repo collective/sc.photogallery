@@ -59,8 +59,8 @@ class RegistryTestCase(unittest.TestCase):
         self.settings = self.registry.forInterface(IPhotoGallerySettings)
 
     def test_download_record_in_registry(self):
-        self.assertTrue(hasattr(self.settings, 'download'))
-        self.assertEqual(self.settings.download, False)
+        self.assertTrue(hasattr(self.settings, 'enable_download'))
+        self.assertEqual(self.settings.enable_download, False)
 
     def test_records_removed_on_uninstall(self):
         qi = self.portal['portal_quickinstaller']
@@ -69,6 +69,6 @@ class RegistryTestCase(unittest.TestCase):
             qi.uninstallProducts(products=[PROJECTNAME])
 
         self.assertNotIn(
-            IPhotoGallerySettings.__identifier__ + '.download',
+            IPhotoGallerySettings.__identifier__ + '.enable_download',
             self.registry
         )

@@ -53,7 +53,7 @@ class ViewTestCase(unittest.TestCase):
 
     def test_can_download(self):
         self.assertFalse(self.view.can_download)
-        record = IPhotoGallerySettings.__identifier__ + '.download'
+        record = IPhotoGallerySettings.__identifier__ + '.enable_download'
         api.portal.set_registry_record(record, True)
         self.assertTrue(self.view.can_download)
 
