@@ -16,7 +16,7 @@
   <browser:page
       for="sc.photogallery.content.PhotoGallery"
       name="view"
-      class="sc.photogallery.browser.view.View"
+      class="sc.photogallery.browser.View"
       template="templates/view.pt"
       permission="zope2.View"
       layer="sc.photogallery.interfaces.IBrowserLayer"
@@ -25,7 +25,7 @@
   <browser:page
       for="sc.photogallery.content.PhotoGallery"
       name="zip"
-      class=".zip.ZipView"
+      class=".ZipView"
       permission="zope2.View"
       layer="sc.photogallery.interfaces.IBrowserLayer"
       />
