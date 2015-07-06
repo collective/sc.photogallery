@@ -16,7 +16,7 @@ if HAS_ZIPEXPORT:
 
 class ZipView(BrowserPage):
 
-    """Export PhotoGallery as zip package"""
+    """Export PhotoGallery as zip package."""
 
     def __init__(self, context, request):
         self.context = context
@@ -81,7 +81,7 @@ class ZipView(BrowserPage):
         if HAS_ZIPEXPORT and self.filename:
             return self.zip_selected([self.context])
         else:
-            message = _(u'Operation not supported')
+            message = _(u'Operation not supported.')
             api.portal.show_message(message, self.request, type=u'error')
             self.request.response.redirect(self.context.absolute_url())
             return

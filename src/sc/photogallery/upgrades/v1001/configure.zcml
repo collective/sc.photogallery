@@ -21,7 +21,7 @@
 
       <genericsetup:upgradeStep
           title="Miscellaneous"
-          description="Register JS resources and update type information."
+          description="Register JS resources, configlet fields and update type information."
           handler=".apply_profile"
           />
 

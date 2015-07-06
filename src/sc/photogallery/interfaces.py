@@ -28,7 +28,7 @@ class IPhotoGallerySettings(form.Schema):
     enable_download = schema.Bool(
         title=_(u'Enable download?'),
         description=_(
-            u'Enable download of individual original images in the Photo Gallery. '
+            u'Enable download of original images in the Photo Gallery by using an explicit link. '
             u'If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images.'
         ),
         default=False

@@ -9,7 +9,7 @@ logger = logging.getLogger(PROJECTNAME)
 
 
 def apply_profile(context):
-    """Register JS resources and update type information."""
+    """Register JS resources, configlet fields and update type information."""
     profile = 'profile-sc.photogallery.upgrades.v1001:default'
     loadMigrationProfile(context, profile)
     logger.info(u'JS resources registered')
