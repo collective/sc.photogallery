@@ -6,7 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
-- Add download functionality to photogallery (closes `#14`_).
+- Add download functionality to Photo Gallery;
+  if enabled, users will be able to easily download original images by using an explicit link.
+  If ``ftw.zipexport`` is installed, they will be also able to download a ZIP file containing all images (closes `#14`_).
   [rodfersou, hvelarde]
 
 - Implement lead image to be used in folder and collection views (closes `#17`_).
