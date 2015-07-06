@@ -15,7 +15,8 @@ if HAS_ZIPEXPORT:
 
 
 class ZipView(BrowserPage):
-    '''Export PhotoGallery as zip package'''
+
+    """Export PhotoGallery as zip package"""
 
     def __init__(self, context, request):
         self.context = context
@@ -52,13 +53,15 @@ class ZipView(BrowserPage):
     def zip_selected(self, objects):
         if not HAS_ZIPEXPORT:
             return None
+
         response = self.request.response
         with ZipGenerator() as generator:
             for obj in objects:
-                repre = getMultiAdapter((obj, self.request),
-                                        interface=IZipRepresentation)
+                repre = getMultiAdapter(
+                    (obj, self.request), interface=IZipRepresentation)
                 for path, pointer in repre.get_files():
                     generator.add_file(path, pointer)
+
             # check if zip has files
             if generator.is_empty:
                 message = _(u'Zip export is not supported on the selected content.')
@@ -67,18 +70,15 @@ class ZipView(BrowserPage):
                 return
 
             zip_file = generator.generate()
-            response.setHeader('Content-Disposition',
-                               'inline; filename="%s"' % self.filename)
-            response.setHeader('Content-type',
-                               'application/zip')
-            response.setHeader('Content-Length',
-                               os.stat(zip_file.name).st_size)
+            response.setHeader(
+                'Content-Disposition', 'inline; filename="{0}"'.format(self.filename))
+            response.setHeader('Content-type', 'application/zip')
+            response.setHeader('Content-Length', os.stat(zip_file.name).st_size)
 
             return filestream_iterator(zip_file.name, 'rb')
 
     def __call__(self):
-        filename = self.filename
-        if HAS_ZIPEXPORT and filename:
+        if HAS_ZIPEXPORT and self.filename:
             return self.zip_selected([self.context])
         else:
             message = _(u'Operation not supported')

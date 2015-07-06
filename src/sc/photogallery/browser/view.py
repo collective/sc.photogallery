@@ -79,10 +79,11 @@ class View(DefaultView, PhotoGalleryMixin):
     def _zip_size(self, last_modified=None):
         if not HAS_ZIPEXPORT:
             return '{0:.1f} MB'.format(0)
+
         with ZipGenerator() as generator:
             for obj in [self.context, ]:
-                repre = getMultiAdapter((obj, self.request),
-                                        interface=IZipRepresentation)
+                repre = getMultiAdapter(
+                    (obj, self.request), interface=IZipRepresentation)
                 for path, pointer in repre.get_files():
                     generator.add_file(path, pointer)
             zip_file = generator.generate()
