@@ -33,3 +33,10 @@ def update_catalog(context):
     for obj in results:
         obj.reindexObject()
     logger.info(u'Catalog successfully updated')
+
+
+def update_configlet(setup_tool):
+    """Update control panel configlet."""
+    profile = 'profile-{0}:default'.format(PROJECTNAME)
+    setup_tool.runImportStepFromProfile(profile, 'controlpanel')
+    logger.info('Control panel configlet updated.')

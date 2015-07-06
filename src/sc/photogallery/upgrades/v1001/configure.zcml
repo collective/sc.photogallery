@@ -37,6 +37,12 @@
           handler=".update_catalog"
           />
 
+      <genericsetup:upgradeStep
+          title="Update control panel configlet"
+          description=""
+          handler=".update_configlet"
+          />
+
   </genericsetup:upgradeSteps>
 
 </configure>

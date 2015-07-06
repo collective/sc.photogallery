@@ -9,7 +9,7 @@ class PhotoGallerySettingsEditForm(controlpanel.RegistryEditForm):
     """Control panel edit form."""
 
     schema = IPhotoGallerySettings
-    label = _(u'PhotoGallery')
+    label = _(u'Photo Gallery')
     description = _(u'Settings for the sc.photogallery package')
 
 
