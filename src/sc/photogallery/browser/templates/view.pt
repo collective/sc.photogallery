@@ -99,7 +99,7 @@
                 <div tal:repeat="item view/results">
                   <a class="download"
                      tal:attributes="href string:${item/absolute_url}/download">
-                    <span>Download Image</span>
+                    <span i18n:translate="">Download image</span>
                     <span class="size"
                           tal:content="python:view.img_size(item)">
                     </span>
@@ -110,7 +110,7 @@
             <tal:zip condition="view/can_zipexport">
               <a class="download album"
                  tal:attributes="href view/zip_url">
-                <span>Download Photogallery</span>
+                <span i18n:translate="">Download all images on a ZIP file</span>
                 <span class="size"
                       tal:content="string:.zip - ${view/zip_size}">
                 </span>
