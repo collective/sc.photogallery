@@ -18,3 +18,16 @@ class PhotoGalleryMixin:
         js_registry = api.portal.get_tool('portal_javascripts')
         global_resources = js_registry.getResourceIds()
         return [r for r in JS_RESOURCES if r not in global_resources]
+
+
+def last_modified(context):
+    """Return the date of the most recently modified object in a container."""
+    # we don't care with recursion
+    objects = context.objectValues()
+    # take all modification dates in seconds since epoch
+    modified = [int(obj.modified().strftime('%s')) for obj in objects]
+    # XXX: do we really need to take care of the container itself?
+    modified.append(int(context.modified().strftime('%s')))
+    modified.sort()
+    # return the most recent date
+    return modified[-1]

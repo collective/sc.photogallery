@@ -6,6 +6,7 @@ from plone.memoize import forever
 from plone.memoize.instance import memoizedproperty
 from sc.photogallery.config import HAS_ZIPEXPORT
 from sc.photogallery.interfaces import IPhotoGallerySettings
+from sc.photogallery.utils import last_modified
 from sc.photogallery.utils import PhotoGalleryMixin
 from zope.component import getMultiAdapter
 
@@ -14,18 +15,6 @@ import os
 if HAS_ZIPEXPORT:
     from ftw.zipexport.generation import ZipGenerator
     from ftw.zipexport.interfaces import IZipRepresentation
-
-
-def last_modified(context):
-    # HACK: We don't care with recursion
-    objects = context.objectValues()
-    # Take all mofied dates in seconds since epoch
-    modified = [int(obj.modified().strftime('%s'))
-                for obj in objects]
-    modified.append(int(context.modified().strftime('%s')))
-    modified.sort()
-    # return the most recent modification
-    return modified[-1]
 
 
 class View(DefaultView, PhotoGalleryMixin):
