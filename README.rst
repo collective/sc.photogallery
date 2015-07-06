@@ -54,7 +54,12 @@ Check the box next to ``Photo Gallery`` and click the 'Activate' button.
 Usage
 -----
 
-TBD.
+Original images in a Photo Gallery can be easily downloaded by enabling the display of an explicit link.
+To use this feature, go to the Photo Gallery control panel configlet and select 'Enable download?'.
+
+If `ftw.zipexport`_ is installed, you will also be able to download all images on a ZIP file.
+
+.. _`ftw.zipexport`: https://pypi.python.org/pypi/ftw.zipexport
 
 Internals
 ---------
@@ -78,7 +83,7 @@ You can use a ``jsregistry.xml`` file that includes the following:
 .. _`collective.nitf`: https://pypi.python.org/pypi/collective.nitf
 .. _`covertile.cycle2`: https://pypi.python.org/pypi/covertile.cycle2
 
-Not entirely unlike
+Not Entirely Unlike
 ===================
 
 `collective.plonetruegallery`_
