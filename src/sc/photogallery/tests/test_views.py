@@ -11,12 +11,11 @@ from zope.interface import alsoProvides
 import unittest
 
 
-def loadFile(name, size=0):
+def load_file(name, size=0):
     """Load file from testing directory"""
     path = '/tmp/{0}'.format(name)
-    fd = open(path, 'rb')
-    data = fd.read()
-    fd.close()
+    with open(path, 'rb') as f:
+        data = f.read()
     return data
 
 
@@ -40,7 +39,7 @@ class ViewTestCase(unittest.TestCase):
                     type='Image',
                     title='My Image {0}'.format(i + 1),
                     container=self.gallery,
-                    image=loadFile(name)
+                    image=load_file(name)
                 )
                 setattr(self, 'image_{0}'.format(i + 1), obj)
 
@@ -110,7 +109,7 @@ class ZipViewTestCase(unittest.TestCase):
                     type='Image',
                     title='My Image {0}'.format(i + 1),
                     container=self.gallery,
-                    image=loadFile(name)
+                    image=load_file(name)
                 )
                 setattr(self, 'image_{0}'.format(i + 1), obj)
 
