@@ -145,7 +145,7 @@ class ZipViewTestCase(unittest.TestCase):
             )
             self.assertEqual(
                 response.getHeader('Content-Disposition'),
-                disposition.format(self.view.last_modified())
+                disposition.format(self.view.last_modified)
             )
             self.assertEqual(response.getHeader('Content-type'), 'application/zip')
             self.assertEqual(response.getHeader('Content-Length'), '419293')
