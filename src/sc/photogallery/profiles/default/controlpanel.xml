@@ -12,6 +12,6 @@
       icon_expr="string:${portal_url}/++resource++sc.photogallery/photogallery_icon.png"
       visible="True"
       i18n:attributes="title">
-    <permission>Manage portal</permission>
+    <permission>sc.photogallery: Setup</permission>
   </configlet>
 </object>

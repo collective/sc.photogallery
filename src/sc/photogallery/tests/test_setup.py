@@ -42,6 +42,13 @@ class InstallTestCase(unittest.TestCase):
         for id in CSS:
             self.assertIn(id, css_resources)
 
+    def test_setup_permission(self):
+        permission = 'sc.photogallery: Setup'
+        roles = self.portal.rolesOfPermission(permission)
+        roles = [r['name'] for r in roles if r['selected']]
+        expected = ['Manager', 'Site Administrator']
+        self.assertListEqual(roles, expected)
+
     def test_default_page_types(self):
         sprops = self.portal['portal_properties'].site_properties
         self.assertIn('Photo Gallery', sprops.default_page_types)
