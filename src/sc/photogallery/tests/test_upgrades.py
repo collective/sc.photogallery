@@ -56,7 +56,7 @@ class To1001TestCase(BaseUpgradeTestCase):
     def test_registered_steps(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
         self.assertGreaterEqual(int(version), int(self.to_version))
-        self.assertEqual(self._get_registered_steps, 3)
+        self.assertEqual(self._get_registered_steps, 4)
 
     def test_miscellaneous(self):
         # check if the upgrade step is registered

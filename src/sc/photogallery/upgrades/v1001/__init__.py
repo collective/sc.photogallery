@@ -9,7 +9,7 @@ logger = logging.getLogger(PROJECTNAME)
 
 
 def apply_profile(context):
-    """Register JS resources and update type information."""
+    """Register JS resources, configlet fields and update type information."""
     profile = 'profile-sc.photogallery.upgrades.v1001:default'
     loadMigrationProfile(context, profile)
     logger.info(u'JS resources registered')
@@ -33,3 +33,10 @@ def update_catalog(context):
     for obj in results:
         obj.reindexObject()
     logger.info(u'Catalog successfully updated')
+
+
+def update_configlet(setup_tool):
+    """Update control panel configlet."""
+    profile = 'profile-{0}:default'.format(PROJECTNAME)
+    setup_tool.runImportStepFromProfile(profile, 'controlpanel')
+    logger.info('Control panel configlet updated.')

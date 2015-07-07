@@ -9,4 +9,5 @@
       <element>sc.photogallery</element>
     </value>
   </record>
+  <records interface="sc.photogallery.interfaces.IPhotoGallerySettings" />
 </registry>

@@ -11,6 +11,7 @@ Test Teardown  Close all browsers
 
 ${title_selector} =  input#form-widgets-IDublinCore-title
 ${description_selector} =  textarea#form-widgets-IDublinCore-description
+@{images} =  640px-Mandel_zoom_00_mandelbrot_set.jpg  640px-Mandel_zoom_04_seehorse_tail.jpg  640px-Mandel_zoom_06_double_hook.jpg  640px-Mandel_zoom_07_satellite.jpg  640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg
 
 *** Test cases ***
 
@@ -19,7 +20,7 @@ Test CRUD
     Goto Homepage
 
     Create  Título  Descrição
-    Update  Título  Descrição
+    Update
     Delete
 
 *** Keywords ***
@@ -38,12 +39,18 @@ Create
     Click Button  Save
     Page Should Contain  Item created
 
-Update
-    [arguments]  ${title}  ${description}
+    # Adding some images
+    : FOR  ${image}  IN  @{images}
+    \  Open Add New Menu
+    \  Click Link  css=a#image
+    \  Page Should Contain  Add Image
+    \  Choose File  css=#image_file  /tmp/${image}
+    \  Click Button  Save
+    \  Page Should Contain  Changes saved
+    \  Click Link  link=${title}
 
+Update
     Click Link  link=Edit
-    Input Text  css=${title_selector}  ${title}
-    Input Text  css=${description_selector}  ${description}
     Click Button  Save
     Page Should Contain  Changes saved
 
