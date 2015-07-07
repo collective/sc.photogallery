@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Make control panel configlet accesible to Site Administrator role (closes `#20`_).
+  [hvelarde]
+
 - Add download functionality to Photo Gallery;
   if enabled, users will be able to easily download original images by using an explicit link.
   If ``ftw.zipexport`` is installed, they will be also able to download a ZIP file containing all images (closes `#14`_).
@@ -44,3 +47,4 @@ There's a frood who really knows where his towel is.
 .. _`#10`: https://github.com/simplesconsultoria/sc.photogallery/issues/10
 .. _`#14`: https://github.com/simplesconsultoria/sc.photogallery/issues/14
 .. _`#17`: https://github.com/simplesconsultoria/sc.photogallery/issues/17
+.. _`#20`: https://github.com/simplesconsultoria/sc.photogallery/issues/20

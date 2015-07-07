@@ -11,6 +11,8 @@
   <include package="plone.app.referenceablebehavior" />
   <include package="plone.app.relationfield" />
 
+  <permission id="sc.photogallery.Setup" title="sc.photogallery: Setup" />
+
   <permission
       id="sc.photogallery.AddPhotoGallery"
       title="sc.photogallery: Add Photo Gallery"
