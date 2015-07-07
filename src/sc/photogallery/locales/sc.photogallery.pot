@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2015-07-07 18:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: sc/photogallery/profiles/default/types/Photo_Gallery.xml
+msgid "A Photo Gallery content type with a slideshow view."
+msgstr ""
+
+#: sc/photogallery/interfaces.py:19
+msgid "Body text"
+msgstr ""
+
+#: sc/photogallery/browser/templates/view.pt:113
+msgid "Download all images on a ZIP file"
+msgstr ""
+
+#: sc/photogallery/browser/templates/view.pt:102
+msgid "Download image"
+msgstr ""
+
+#: sc/photogallery/interfaces.py:30
+msgid "Enable download of original images in the Photo Gallery by using an explicit link. If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images."
+msgstr ""
+
+#: sc/photogallery/interfaces.py:29
+msgid "Enable download?"
+msgstr ""
+
+#: sc/photogallery/tiles/photogallery.pt:81
+msgid "Go to photogallery"
+msgstr ""
+
+#: sc/photogallery/browser/zip.py:84
+msgid "Operation not supported."
+msgstr ""
+
+#: sc/photogallery/controlpanel.py:12
+#: sc/photogallery/profiles/default/controlpanel.xml
+#: sc/photogallery/profiles/default/types/Photo_Gallery.xml
+msgid "Photo Gallery"
+msgstr ""
+
+#: sc/photogallery/controlpanel.py:13
+msgid "Settings for the sc.photogallery package"
+msgstr ""
+
+#: sc/photogallery/browser/templates/view.pt:122
+#: sc/photogallery/tiles/photogallery.pt:89
+msgid "The photo gallery has no images on it."
+msgstr ""
+
+#: sc/photogallery/tiles/photogallery.py:20
+msgid "UUID"
+msgstr ""
+
+#: sc/photogallery/browser/zip.py:67
+msgid "Zip export is not supported on the selected content."
+msgstr ""
+
+#. Default: "Photo Gallery"
+#: sc/photogallery/tiles/photogallery.py:37
+msgid "msg_short_name_photogallery"
+msgstr ""
+

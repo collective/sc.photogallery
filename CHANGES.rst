@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Add Brazilian Portuguese and Spanish translations.
+  [hvelarde]
+
 - Make control panel configlet accesible to Site Administrator role (closes `#20`_).
   [hvelarde]
 

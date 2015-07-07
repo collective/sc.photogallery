@@ -3,7 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="context/main_template/macros/master"
-      i18n_domain="sc.photogallery">
+      i18n:domain="sc.photogallery">
   <head>
     <metal:javascriptslot fill-slot="javascript_head_slot">
       <tal:scripts repeat="js view/js_resources">

@@ -6,6 +6,7 @@
     i18n_domain="sc.photogallery">
 
   <five:registerPackage package="." />
+  <i18n:registerTranslations directory="locales" />
 
   <include package="plone.app.dexterity" />
   <include package="plone.app.referenceablebehavior" />
