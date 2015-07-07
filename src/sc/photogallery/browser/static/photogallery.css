@@ -10,7 +10,6 @@ body.portaltype-photo-gallery .slideshow-description,
 body.portaltype-photo-gallery .slideshow-carrossel
 {
     float: left;
-
     width: 50%;
 }
 
@@ -18,7 +17,6 @@ body.portaltype-photo-gallery .slideshow-carrossel
 .photogallery-tile .slideshow-carrossel
 {
     float: left;
-
     width: 45%;
 }
 
@@ -31,15 +29,11 @@ body.portaltype-photo-gallery .slideshow-download,
 .photogallery-tile .photogallery-url
 {
     font-weight: bold;
-
     display: block;
     float: left;
-
     width: 10%;
     padding: 6px 0;
-
     text-align: center;
-
     color: white;
     background-color: #0094cc;
 }
@@ -58,13 +52,14 @@ body.portaltype-photo-gallery .cycle-slideshow,
 .photogallery-tile .cycle-slideshow
 {
     position: relative;
-
     width: 100%;
     max-width: 768px;
     height: auto;
     padding: 0;
-
     background: #f1f1f1;
+}
+body.portaltype-photo-gallery .cycle-description.cycle-slideshow {
+    background: transparent;
 }
 
 body.portaltype-photo-gallery .cycle-player img,
@@ -73,9 +68,7 @@ body.portaltype-photo-gallery .cycle-player img,
     position: absolute;
     top: 0;
     left: 0;
-
     display: block;
-
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -122,11 +115,8 @@ body.portaltype-photo-gallery .cycle-pager,
     position: absolute;
     z-index: 500;
     top: 10px;
-
     overflow: hidden;
-
     width: 100%;
-
     text-align: center;
 }
 
@@ -135,14 +125,10 @@ body.portaltype-photo-gallery .cycle-pager span,
 {
     font-family: arial;
     font-size: 50px;
-
     display: inline-block;
-
     width: 16px;
     height: 16px;
-
     cursor: pointer;
-
     color: #ddd;
 }
 
@@ -165,7 +151,6 @@ body.portaltype-photo-gallery .cycle-caption,
     z-index: 700;
     right: 15px;
     bottom: 15px;
-
     color: white;
 }
 
@@ -182,20 +167,15 @@ body.portaltype-photo-gallery a.cycle-next,
 .photogallery-tile a.cycle-next
 {
     font-size: 50px;
-
     position: absolute;
     z-index: 800;
     top: 0;
-
     width: 10%;
     height: 87%;
-
     cursor: pointer;
     text-align: center;
-
     opacity: 0;
     border-bottom: 0 !important;
-
     filter: alpha(opacity=0);
 }
 
@@ -257,6 +237,27 @@ body.portaltype-photo-gallery .disabled,
     opacity: .5;
 
     filter: alpha(opacity=50);
+}
+
+body.portaltype-photo-gallery .slideshow-download .cycle-slideshow {
+    background: transparent;
+}
+body.portaltype-photo-gallery .slideshow-download {
+    position: relative;
+    clear: both;
+}
+body.portaltype-photo-gallery .download.album,
+body.portaltype-photo-gallery .slideshow-download a {
+    display: inline-block;
+    margin-top: 10px;
+    border: none;
+}
+
+body.portaltype-photo-gallery .slideshow-container {
+    margin: 10px auto 50px auto;
+}
+body.portaltype-photo-gallery .download.album {
+    margin-left: 25px;
 }
 
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
