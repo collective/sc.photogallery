@@ -11,7 +11,7 @@
       name="photogallery-settings"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class="sc.photogallery.controlpanel.PhotoGallerySettingsControlPanel"
-      permission="cmf.ManagePortal"
+      permission="sc.photogallery.Setup"
       />
 
   <browser:page

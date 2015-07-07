@@ -103,3 +103,21 @@ class To1001TestCase(BaseUpgradeTestCase):
         # run the upgrade step to validate the update
         self._do_upgrade_step(step)
         self.assertEqual(len(catalog(Description='Foo')), 1)
+
+    def test_update_configlet(self):
+        # check if the upgrade step is registered
+        title = u'Update control panel configlet'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        cptool = api.portal.get_tool('portal_controlpanel')
+        configlet = cptool.getActionObject('Products/photogallery')
+        configlet.permissions = old_permissions = ('cmf.ManagePortal',)
+        self.assertEqual(configlet.getPermissions(), old_permissions)
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        configlet = cptool.getActionObject('Products/photogallery')
+        new_permissions = ('sc.photogallery: Setup',)
+        self.assertEqual(configlet.getPermissions(), new_permissions)
