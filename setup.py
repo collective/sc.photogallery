@@ -45,13 +45,14 @@ setup(
         'plone.app.textfield',
         'plone.app.upgrade',
         'plone.dexterity',
-        'plone.directives.form',
         'plone.memoize',
+        'plone.supermodel',
         'Products.CMFPlone >=4.3',
         'Products.GenericSetup',
         'setuptools',
         'zope.i18nmessageid',
         'zope.interface',
+        'zope.schema',
     ],
     extras_require={
         'test': [

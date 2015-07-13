@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-07-07 18:53+0000\n"
+"POT-Creation-Date: 2015-07-13 02:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,28 +18,36 @@ msgstr ""
 msgid "A Photo Gallery content type with a slideshow view."
 msgstr ""
 
-#: sc/photogallery/interfaces.py:19
+#: sc/photogallery/interfaces.py:28
+msgid "Allow downloading of original images on this photo gallery."
+msgstr ""
+
+#: sc/photogallery/interfaces.py:27
+msgid "Allow image download?"
+msgstr ""
+
+#: sc/photogallery/interfaces.py:20
 msgid "Body text"
 msgstr ""
 
 #: sc/photogallery/browser/templates/view.pt:113
-msgid "Download all images on a ZIP file"
+msgid "Download all images on a ZIP file (${zip_size})"
 msgstr ""
 
-#: sc/photogallery/browser/templates/view.pt:102
-msgid "Download image"
+#: sc/photogallery/browser/templates/view.pt:103
+msgid "Download image (${img_size})"
 msgstr ""
 
-#: sc/photogallery/interfaces.py:30
-msgid "Enable download of original images in the Photo Gallery by using an explicit link. If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images."
+#: sc/photogallery/interfaces.py:40
+msgid "Enable download of original images in photo galleries by using an explicit link. If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images."
 msgstr ""
 
-#: sc/photogallery/interfaces.py:29
-msgid "Enable download?"
+#: sc/photogallery/interfaces.py:39
+msgid "Enable image download globally?"
 msgstr ""
 
 #: sc/photogallery/tiles/photogallery.pt:81
-msgid "Go to photogallery"
+msgid "Go to photo gallery"
 msgstr ""
 
 #: sc/photogallery/browser/zip.py:84
@@ -56,9 +64,9 @@ msgstr ""
 msgid "Settings for the sc.photogallery package"
 msgstr ""
 
-#: sc/photogallery/browser/templates/view.pt:122
+#: sc/photogallery/browser/templates/view.pt:120
 #: sc/photogallery/tiles/photogallery.pt:89
-msgid "The photo gallery has no images on it."
+msgid "This photo gallery has no images on it."
 msgstr ""
 
 #: sc/photogallery/tiles/photogallery.py:20

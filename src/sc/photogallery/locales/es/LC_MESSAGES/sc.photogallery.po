@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-07-07 18:53+0000\n"
-"PO-Revision-Date: 2015-07-07 15:55-0300\n"
+"POT-Creation-Date: 2015-07-13 02:20+0000\n"
+"PO-Revision-Date: 2015-07-12 23:18-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,28 +21,36 @@ msgstr ""
 msgid "A Photo Gallery content type with a slideshow view."
 msgstr "Un tipo de contenido para galería de fotos con una vista de carrusel."
 
-#: sc/photogallery/interfaces.py:19
+#: sc/photogallery/interfaces.py:28
+msgid "Allow downloading of original images on this photo gallery."
+msgstr "Permitir la descarga de las imágenes originales de esta galería de fotos."
+
+#: sc/photogallery/interfaces.py:27
+msgid "Allow image download?"
+msgstr "¿Permitir la descarga de imágenes?"
+
+#: sc/photogallery/interfaces.py:20
 msgid "Body text"
 msgstr "Cuerpo del texto"
 
 #: sc/photogallery/browser/templates/view.pt:113
-msgid "Download all images on a ZIP file"
-msgstr "Descargar todas las imágenes originales en un archivo ZIP."
+msgid "Download all images on a ZIP file (${zip_size})"
+msgstr "Descargar todas las imágenes en un archivo ZIP (${zip_size})"
 
-#: sc/photogallery/browser/templates/view.pt:102
-msgid "Download image"
-msgstr "Descargar imagen original"
+#: sc/photogallery/browser/templates/view.pt:103
+msgid "Download image (${img_size})"
+msgstr "Descargar imagen (${img_size})"
 
-#: sc/photogallery/interfaces.py:30
-msgid "Enable download of original images in the Photo Gallery by using an explicit link. If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images."
-msgstr "Habilita la descarga de las imágenes originales de la galería de fotos utilizando un vínculo explícito. Si ftw.zipexport está instalado, habilita también la descarga de todas las imágenes de la galería como un archivo ZIP."
+#: sc/photogallery/interfaces.py:40
+msgid "Enable download of original images in photo galleries by using an explicit link. If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images."
+msgstr "Habilita la descarga de imágenes originales en las galerías de fotos utilizando un vínculo explícito. Si ftw.zipexport está instalado, habilita también la descarga de todas las imágenes de una galería como un archivo ZIP."
 
-#: sc/photogallery/interfaces.py:29
-msgid "Enable download?"
-msgstr "¿Habilitar descarga?"
+#: sc/photogallery/interfaces.py:39
+msgid "Enable image download globally?"
+msgstr "¿Habilitar la descarga de imágenes globalmente?"
 
 #: sc/photogallery/tiles/photogallery.pt:81
-msgid "Go to photogallery"
+msgid "Go to photo gallery"
 msgstr "Ir a la galería de fotos"
 
 #: sc/photogallery/browser/zip.py:84
@@ -59,10 +67,10 @@ msgstr "Galería de fotos"
 msgid "Settings for the sc.photogallery package"
 msgstr "Configuración de la galería de fotos"
 
-#: sc/photogallery/browser/templates/view.pt:122
+#: sc/photogallery/browser/templates/view.pt:120
 #: sc/photogallery/tiles/photogallery.pt:89
-msgid "The photo gallery has no images on it."
-msgstr "La galería de fotos está vacía."
+msgid "This photo gallery has no images on it."
+msgstr "Esta galería de fotos está vacía."
 
 #: sc/photogallery/tiles/photogallery.py:20
 msgid "UUID"
@@ -76,3 +84,4 @@ msgstr "La exportación ZIP no está soportada en el contexto seleccionado."
 #: sc/photogallery/tiles/photogallery.py:37
 msgid "msg_short_name_photogallery"
 msgstr "Galería de fotos"
+
