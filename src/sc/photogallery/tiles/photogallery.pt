@@ -82,12 +82,12 @@
              tal:define="gallery view/gallery"
              tal:attributes="href gallery/absolute_url"
              i18n:translate="">
-            Go to photogallery
+            Go to photo gallery
           </a>
         </div><!-- slideshow-pager -->
       </div>
       <div class="" tal:condition="is_empty" i18n:translate="">
-        The photo gallery has no images on it.
+        This photo gallery has no images on it.
       </div>
     </div>
   </body>

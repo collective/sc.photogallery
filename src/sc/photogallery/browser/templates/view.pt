@@ -99,9 +99,8 @@
                 <div tal:repeat="item view/results">
                   <a class="download"
                      tal:attributes="href string:${item/absolute_url}/download">
-                    <span i18n:translate="">Download image</span>
-                    <span class="size"
-                          tal:content="python:view.img_size(item)">
+                    <span i18n:translate="">
+                      Download image (<span tal:replace="python:view.img_size(item)" i18n:name="img_size" />)
                     </span>
                   </a>
                 </div>
@@ -110,9 +109,8 @@
             <tal:zip condition="view/can_zipexport">
               <a class="download album"
                  tal:attributes="href view/zip_url">
-                <span i18n:translate="">Download all images on a ZIP file</span>
-                <span class="size"
-                      tal:content="string:.zip - ${view/zip_size}">
+                <span i18n:translate="">
+                  Download all images on a ZIP file (<span tal:replace="view/zip_size" i18n:name="zip_size" />)
                 </span>
               </a>
             </tal:zip>
@@ -120,7 +118,7 @@
         </div><!-- slideshow-pager -->
       </div>
       <div class="" tal:condition="is_empty" i18n:translate="">
-        The photo gallery has no images on it.
+        This photo gallery has no images on it.
       </div>
     </metal:block>
   </body>

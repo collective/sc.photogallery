@@ -54,16 +54,24 @@ class View(DefaultView, PhotoGalleryMixin):
 
     @property
     def can_download(self):
+        """Check if original images can be explicitly downloaded, that is,
+        if downloading is enabled globally and the current object allows it.
+        """
         record = IPhotoGallerySettings.__identifier__ + '.enable_download'
-        enabled = api.portal.get_registry_record(record)
-        return enabled
+        enabled_globally = api.portal.get_registry_record(record)
+        allow_download = self.context.allow_download
+        return enabled_globally and allow_download
 
     def img_size(self, item):
         return '{0:.1f} MB'.format(item.size() / float(1024 * 1024))
 
     @property
     def can_zipexport(self):
-        return HAS_ZIPEXPORT
+        """Check if original images can be downloaded as a ZIP file,
+        that is, if ftw.zipexport is installed and downloading is
+        allowed in the current object.
+        """
+        return HAS_ZIPEXPORT and self.can_download
 
     @property
     def last_modified(self):

@@ -45,6 +45,10 @@ class ViewTestCase(unittest.TestCase):
 
         self.view = api.content.get_view('view', self.gallery, self.request)
 
+    def _enable_download(self):
+        record = IPhotoGallerySettings.__identifier__ + '.enable_download'
+        api.portal.set_registry_record(record, True)
+
     def test_render_js_resources(self):
         from sc.photogallery.config import JS_RESOURCES
         rendered = self.view()
@@ -53,9 +57,10 @@ class ViewTestCase(unittest.TestCase):
 
     def test_can_download(self):
         self.assertFalse(self.view.can_download)
-        record = IPhotoGallerySettings.__identifier__ + '.enable_download'
-        api.portal.set_registry_record(record, True)
+        self._enable_download()
         self.assertTrue(self.view.can_download)
+        self.gallery.allow_download = False
+        self.assertFalse(self.view.can_download)
 
     def test_img_size(self):
         self.assertEqual(self.view.img_size(self.image_1), '0.0 MB')
@@ -65,7 +70,11 @@ class ViewTestCase(unittest.TestCase):
         self.assertEqual(self.view.img_size(self.image_5), '0.1 MB')
 
     def test_can_zipexport(self):
+        self.assertFalse(self.view.can_zipexport)
+        self._enable_download()
         self.assertTrue(self.view.can_zipexport)
+        self.gallery.allow_download = False
+        self.assertFalse(self.view.can_zipexport)
 
     def test_last_modified(self):
         now = int(DateTime().strftime('%s'))

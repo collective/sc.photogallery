@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- The Photo Gallery content type now includes a new `allow_download` field to restrict the downloading of images on an item (closes `#24`_).
+  [hvelarde]
+
 - Add Brazilian Portuguese and Spanish translations.
   [hvelarde]
 
@@ -51,3 +54,4 @@ There's a frood who really knows where his towel is.
 .. _`#14`: https://github.com/simplesconsultoria/sc.photogallery/issues/14
 .. _`#17`: https://github.com/simplesconsultoria/sc.photogallery/issues/17
 .. _`#20`: https://github.com/simplesconsultoria/sc.photogallery/issues/20
+.. _`#24`: https://github.com/simplesconsultoria/sc.photogallery/issues/24
