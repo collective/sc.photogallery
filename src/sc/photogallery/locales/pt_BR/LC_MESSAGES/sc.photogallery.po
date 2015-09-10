@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2015-07-13 02:20+0000\n"
-"PO-Revision-Date: 2015-07-12 23:19-0300\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2015-09-10 11:31-0300\n"
+"Last-Translator: André Nogueira <agnogueira@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr "Um tipo de conteúdo para galeria de fotos com uma visão de carrossel."
 
 #: sc/photogallery/interfaces.py:28
 msgid "Allow downloading of original images on this photo gallery."
-msgstr "Permitir o download das imagens de esta galeria de fotos."
+msgstr "Permitir o download das imagens desta galeria de fotos."
 
 #: sc/photogallery/interfaces.py:27
 msgid "Allow image download?"
@@ -43,7 +43,7 @@ msgstr "Baixar imagem (${img_size})"
 
 #: sc/photogallery/interfaces.py:40
 msgid "Enable download of original images in photo galleries by using an explicit link. If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images."
-msgstr "Habilita o download de imagens originais nas galeria de fotos usando um link explícito. Se o ftw.zipexport está instalado, habilita também o download de um arquivo ZIP com todas as imagens numa galeria."
+msgstr "Habilita o download de imagens originais nas galeria de fotos usando um link explícito. Se o ftw.zipexport estiver instalado, habilita também o download de um arquivo ZIP com todas as imagens de uma galeria."
 
 #: sc/photogallery/interfaces.py:39
 msgid "Enable image download globally?"
@@ -51,7 +51,7 @@ msgstr "Habilitar o download de imagens globalmente?"
 
 #: sc/photogallery/tiles/photogallery.pt:81
 msgid "Go to photo gallery"
-msgstr "Ir na galeria de fotos"
+msgstr "Ir para a galeria de fotos"
 
 #: sc/photogallery/browser/zip.py:84
 msgid "Operation not supported."
@@ -65,7 +65,7 @@ msgstr "Galeria de fotos"
 
 #: sc/photogallery/controlpanel.py:13
 msgid "Settings for the sc.photogallery package"
-msgstr "Configura cão do sc.photogallery"
+msgstr "Configuração do sc.photogallery"
 
 #: sc/photogallery/browser/templates/view.pt:120
 #: sc/photogallery/tiles/photogallery.pt:89
@@ -84,4 +84,3 @@ msgstr "A exportação de arquivos ZIP não é suportada no contexto selecionado
 #: sc/photogallery/tiles/photogallery.py:37
 msgid "msg_short_name_photogallery"
 msgstr "Galeria de fotos"
-
