@@ -16,7 +16,7 @@ var PhotoGallery = (function() {
     self.$('.cycle-carrossel .thumb-itens').on('click', self, self.thumbs_click);
   };
   PhotoGallery.prototype.fix_image_size = function() {
-    var self, max_height, max_width, i, len, ref, img, $player, $img;
+    var self, max_height, max_width, $player, $imgs;
     self = this;
 
     // Calc max_with and max_height
@@ -25,19 +25,11 @@ var PhotoGallery = (function() {
     max_height = max_width / self.proportion;
     // Calc max_with and max_height
 
-    // Update properties when necessary
-    ref = self.$('.cycle-player img');
-    for (i = 0, len = ref.length; i < len; i++) {
-      img = ref[i];
-      $img = $(img);
-      if ($img.height() > $img.width()) {
-        $img.css('width', 'auto');
-        $img.height(max_height);
-      } else {
-        $img.width(max_width);
-        $img.height(max_height);
-      }
-    }
+    $imgs = self.$('.cycle-player img');
+    $imgs.css({
+      'max-width': max_width,
+      'max-height': max_height
+    });
   };
 
   PhotoGallery.prototype.sync_slideshows = function(e, opts) {

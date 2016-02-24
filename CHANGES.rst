@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Avoid photo distorting when landscape format is used.
+  [rodfersou]
+
 - The Photo Gallery content type now includes a new `allow_download` field to restrict the downloading of images on an item (closes `#24`_).
   [hvelarde]
 
