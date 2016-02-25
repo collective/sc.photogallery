@@ -5,6 +5,8 @@ from zope.interface import implements
 
 # BBB: for content created with version 1.0a1
 import sys
+
+
 sys.modules['sc.photogallery.content.photogallery'] = sys.modules[__name__]
 
 

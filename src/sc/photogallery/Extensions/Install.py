@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from sc.photogallery.config import PROJECTNAME
 from plone import api
+from sc.photogallery.config import PROJECTNAME
 
 
 def remove_tile(portal):

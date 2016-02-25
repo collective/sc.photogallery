@@ -7,6 +7,7 @@ from sc.photogallery.testing import INTEGRATION_TESTING
 
 import unittest
 
+
 JS = (
     '++resource++sc.photogallery/photogallery.js',
 )

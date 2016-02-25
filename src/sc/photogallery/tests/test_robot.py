@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from sc.photogallery.testing import ROBOT_TESTING
 from plone.testing import layered
+from sc.photogallery.testing import ROBOT_TESTING
 
 import os
 import robotsuite

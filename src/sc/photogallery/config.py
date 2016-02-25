@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pkg_resources
 
+
 PROJECTNAME = 'sc.photogallery'
 
 # Cycle2 JS resources used by the package

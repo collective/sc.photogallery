@@ -9,6 +9,7 @@ from ZPublisher.Iterators import filestream_iterator
 
 import os
 
+
 if HAS_ZIPEXPORT:
     from ftw.zipexport.generation import ZipGenerator
     from ftw.zipexport.interfaces import IZipRepresentation

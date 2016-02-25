@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from collective.cover.tests.base import TestTileMixin
+from mock import Mock
+from plone import api
 from sc.photogallery.testing import INTEGRATION_TESTING
 from sc.photogallery.tiles.photogallery import IPhotoGalleryTile
 from sc.photogallery.tiles.photogallery import PhotoGalleryTile
-from mock import Mock
-from plone import api
 
 import unittest
 

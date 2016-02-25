@@ -11,6 +11,7 @@ from zope.component import getMultiAdapter
 
 import os
 
+
 if HAS_ZIPEXPORT:
     from ftw.zipexport.generation import ZipGenerator
     from ftw.zipexport.interfaces import IZipRepresentation
