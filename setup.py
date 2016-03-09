@@ -40,7 +40,6 @@ setup(
         'collective.js.cycle2',
         'plone.api',
         'plone.app.dexterity [grok, relations]',
-        'plone.app.referenceablebehavior',
         'plone.app.relationfield',
         'plone.app.textfield',
         'plone.app.upgrade',

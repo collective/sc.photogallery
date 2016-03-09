@@ -6,6 +6,10 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Remove hard dependency on plone.app.referenceablebehavior as Archetypes is no longer the default framework in Plone 5.
+  Under Plone < 5.0 you should now explicitly add it to the `eggs` part of your buildout configuration to avoid issues while upgrading.
+  [hvelarde]
+
 - Avoid photo distorting when landscape format is used.
   [rodfersou]
 

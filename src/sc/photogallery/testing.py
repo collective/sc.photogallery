@@ -30,16 +30,6 @@ IMAGES = [
 ]
 
 
-def turn_off_referenceablebehavior():
-    """FIXME"""
-    from plone.dexterity.interfaces import IDexterityFTI
-    from zope.component import queryUtility
-    fti = queryUtility(IDexterityFTI, name='Photo Gallery')
-    behaviors = list(fti.behaviors)
-    behaviors.remove('plone.app.referenceablebehavior.referenceable.IReferenceable')
-    fti.behaviors = tuple(behaviors)
-
-
 class Fixture(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
@@ -74,9 +64,6 @@ class Fixture(PloneSandboxLayer):
         self.applyProfile(portal, 'collective.js.cycle2:default')
 
         self.applyProfile(portal, 'sc.photogallery:default')
-
-        if PLONE_VERSION >= '5.0':
-            turn_off_referenceablebehavior()
 
         current_dir = os.path.abspath(os.path.dirname(__file__))
         for img in IMAGES:
