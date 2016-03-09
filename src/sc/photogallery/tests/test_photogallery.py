@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from plone.app.dexterity.behaviors.exclfromnav import IExcludeFromNavigation
-from plone.app.referenceablebehavior.referenceable import IReferenceable
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.namedfile.tests.test_image import zptlogo
-from plone.uuid.interfaces import IAttributeUUID
 from sc.photogallery.interfaces import IPhotoGallery
 from sc.photogallery.testing import INTEGRATION_TESTING
-from sc.photogallery.testing import PLONE_VERSION
 from zope.component import createObject
 from zope.component import queryUtility
 
@@ -46,11 +43,6 @@ class PhotoGalleryTestCase(unittest.TestCase):
 
     def test_exclude_from_navigation_behavior(self):
         self.assertTrue(IExcludeFromNavigation.providedBy(self.gallery))
-
-    @unittest.skipIf(PLONE_VERSION >= '5.0', 'FIXME')
-    def test_is_referenceable(self):
-        self.assertTrue(IReferenceable.providedBy(self.gallery))
-        self.assertTrue(IAttributeUUID.providedBy(self.gallery))
 
     def test_allowed_content_types(self):
         allowed_types = [t.getId() for t in self.gallery.allowedContentTypes()]
