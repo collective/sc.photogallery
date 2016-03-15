@@ -21,6 +21,10 @@ Mostly Harmless
 .. image:: https://img.shields.io/coveralls/simplesconsultoria/sc.photogallery/master.svg
     :target: https://coveralls.io/r/simplesconsultoria/sc.photogallery
 
+These are some sites using ``sc.photogallery``:
+
+* `Portal Brasil 2016 <http://www.brasil2016.gov.br/>`_ (BR)
+
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
 .. _`opening a support ticket`: https://github.com/simplesconsultoria/sc.photogallery/issues
