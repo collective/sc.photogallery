@@ -9,7 +9,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from sc.photogallery import _
 from sc.photogallery.utils import PhotoGalleryMixin
 from zope import schema
-from zope.interface import implements
+from zope.interface import implementer
 
 
 class IPhotoGalleryTile(IPersistentCoverTile):
@@ -23,11 +23,10 @@ class IPhotoGalleryTile(IPersistentCoverTile):
     )
 
 
+@implementer(IPhotoGalleryTile)
 class PhotoGalleryTile(PersistentCoverTile, PhotoGalleryMixin):
 
     """A tile that shows a photo gallery."""
-
-    implements(IPhotoGalleryTile)
 
     index = ViewPageTemplateFile('photogallery.pt')
     is_configurable = True
