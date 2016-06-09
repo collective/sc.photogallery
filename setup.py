@@ -55,7 +55,7 @@ setup(
     ],
     extras_require={
         'test': [
-            'collective.cover',
+            'collective.cover [test]',
             'mock',
             'plone.app.robotframework',
             'plone.app.testing [robot] >=4.2.2',
