@@ -37,8 +37,8 @@
             </div>
           </div><!-- cycle-player -->
           <div class="cycle-navigation">
-            <a href="#" class="cycle-prev"><span>&lang;</span></a>
-            <a href="#" class="cycle-next"><span>&rang;</span></a>
+            <a href="#" class="cycle-prev"><span>&#x27E8;</span></a>
+            <a href="#" class="cycle-next"><span>&#x27E9;</span></a>
           </div>
         </div><!-- slideshow-player -->
         <div class="slideshow-pager">

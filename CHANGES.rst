@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 1.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use HTML entities in Unicode Normalization Form C to avoid warnings when validating.
+  [hvelarde]
 
 
 1.0b1 (2016-03-15)
