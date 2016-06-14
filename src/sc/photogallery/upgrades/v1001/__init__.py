@@ -17,13 +17,6 @@ def apply_profile(context):
     logger.info(u'JS resources registered')
 
 
-def cook_javascript_resources(context):
-    """Cook JS resources."""
-    js_tool = api.portal.get_tool('portal_javascripts')
-    js_tool.cookResources()
-    logger.info('JS resources were cooked')
-
-
 def update_catalog(context):
     """Update Photo Gallery objects as class information has changed."""
     logger.info(u'Updating Photo Gallery objects')

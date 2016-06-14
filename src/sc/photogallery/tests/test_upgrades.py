@@ -121,3 +121,14 @@ class To1001TestCase(BaseUpgradeTestCase):
         configlet = cptool.getActionObject('Products/photogallery')
         new_permissions = ('sc.photogallery: Setup',)
         self.assertEqual(configlet.getPermissions(), new_permissions)
+
+
+class To1002TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'1001', u'1002')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 1)

@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0b2 (unreleased)
 ------------------
 
+- Fix portrait view of image.
+  [rodfersou]
+
 - Use HTML entities in Unicode Normalization Form C to avoid warnings when validating.
   [hvelarde]
 

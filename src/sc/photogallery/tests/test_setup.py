@@ -58,7 +58,7 @@ class InstallTestCase(unittest.TestCase):
         setup = self.portal['portal_setup']
         profile = 'sc.photogallery:default'
         self.assertEqual(
-            setup.getLastVersionForProfile(profile), (u'1001',))
+            setup.getLastVersionForProfile(profile), (u'1002',))
 
     def test_tile(self):
         tiles = api.portal.get_registry_record('plone.app.tiles')
