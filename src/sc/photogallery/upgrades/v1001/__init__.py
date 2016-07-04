@@ -3,11 +3,7 @@ from plone import api
 from plone.app.upgrade.utils import loadMigrationProfile
 from sc.photogallery.config import PROJECTNAME
 from sc.photogallery.interfaces import IPhotoGallery
-
-import logging
-
-
-logger = logging.getLogger(PROJECTNAME)
+from sc.photogallery.logger import logger
 
 
 def apply_profile(context):
