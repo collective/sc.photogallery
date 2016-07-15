@@ -4,6 +4,10 @@ body.portaltype-photo-gallery .slideshow-container,
     width: 100%;
     max-width: 748px;
     margin: 10px auto;
+
+    opacity: 0;
+
+    filter: alpha(opacity=0);
 }
 
 body.portaltype-photo-gallery .slideshow-description,
