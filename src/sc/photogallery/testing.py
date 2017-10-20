@@ -11,16 +11,31 @@ from plone import api
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
-from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 from sc.photogallery.config import HAS_ZIPEXPORT
 
 import os
+import pkg_resources
 import shutil
 
 
-PLONE_VERSION = api.env.plone_version()
+try:
+    pkg_resources.get_distribution('plone.app.contenttypes')
+except pkg_resources.DistributionNotFound:
+    from plone.app.testing import PLONE_FIXTURE
+else:
+    from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE as PLONE_FIXTURE
+
+try:
+    pkg_resources.get_distribution('collective.cover')
+except pkg_resources.DistributionNotFound:
+    HAS_COVER = False
+else:
+    HAS_COVER = True
+
+
+IS_PLONE_5 = api.env.plone_version().startswith('5')
 IMAGES = [
     '640px-Mandel_zoom_00_mandelbrot_set.jpg',
     '640px-Mandel_zoom_04_seehorse_tail.jpg',
@@ -35,10 +50,7 @@ class Fixture(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        if PLONE_VERSION >= '5.0':
-            import plone.app.contenttypes
-            self.loadZCML(package=plone.app.contenttypes)
-        else:
+        if HAS_COVER:
             import collective.cover
             self.loadZCML(package=collective.cover)
 
@@ -53,16 +65,13 @@ class Fixture(PloneSandboxLayer):
         self.loadZCML(package=sc.photogallery)
 
     def setUpPloneSite(self, portal):
-        if PLONE_VERSION >= '5.0':
-            self.applyProfile(portal, 'plone.app.contenttypes:default')
-        else:
+        if HAS_COVER:
             self.applyProfile(portal, 'collective.cover:default')
 
         if HAS_ZIPEXPORT:
             self.applyProfile(portal, 'ftw.zipexport:default')
 
         self.applyProfile(portal, 'collective.js.cycle2:default')
-
         self.applyProfile(portal, 'sc.photogallery:default')
 
         current_dir = os.path.abspath(os.path.dirname(__file__))
@@ -74,12 +83,10 @@ class Fixture(PloneSandboxLayer):
 FIXTURE = Fixture()
 
 INTEGRATION_TESTING = IntegrationTesting(
-    bases=(FIXTURE,),
-    name='sc.photogallery:Integration')
+    bases=(FIXTURE,), name='sc.photogallery:Integration')
 
 FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(FIXTURE,),
-    name='sc.photogallery:Functional')
+    bases=(FIXTURE,), name='sc.photogallery:Functional')
 
 ROBOT_TESTING = FunctionalTesting(
     bases=(FIXTURE, AUTOLOGIN_LIBRARY_FIXTURE, z2.ZSERVER_FIXTURE),

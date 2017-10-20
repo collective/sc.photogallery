@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
-from collective.cover.tests.base import TestTileMixin
 from mock import Mock
 from plone import api
+from sc.photogallery.testing import HAS_COVER
 from sc.photogallery.testing import INTEGRATION_TESTING
-from sc.photogallery.tiles.photogallery import IPhotoGalleryTile
-from sc.photogallery.tiles.photogallery import PhotoGalleryTile
 
 import unittest
+
+
+if HAS_COVER:
+    from collective.cover.tests.base import TestTileMixin
+    from sc.photogallery.tiles.photogallery import IPhotoGalleryTile
+    from sc.photogallery.tiles.photogallery import PhotoGalleryTile
+else:
+    class TestTileMixin:
+        pass
+
+    def test_suite():
+        return unittest.TestSuite()
 
 
 class PhotoGalleryTileTestCase(TestTileMixin, unittest.TestCase):
@@ -54,12 +64,3 @@ class PhotoGalleryTileTestCase(TestTileMixin, unittest.TestCase):
         rendered = self.tile()
         for js in JS_RESOURCES:
             self.assertIn(js, rendered)
-
-
-def test_suite():
-    """Load tile tests only in Plone < 5.0."""
-    from sc.photogallery.testing import PLONE_VERSION
-    if PLONE_VERSION < '5.0':
-        return unittest.defaultTestLoader.loadTestsFromName(__name__)
-    else:
-        return unittest.TestSuite()

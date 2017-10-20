@@ -67,11 +67,8 @@ class To1001TestCase(BaseUpgradeTestCase):
         # simulate state on previous version
         js_tool = self.portal['portal_javascripts']
         from sc.photogallery.tests.test_setup import JS
-        for id in JS:
-            js_tool.unregisterResource(id)
-
-        self.assertEqual(
-            set([JS]) & set([js_tool.getResourceIds()]), set([]))
+        js_tool.unregisterResource(JS)
+        self.assertNotIn(JS, js_tool.getResourceIds())
 
         types_tool = self.portal['portal_types']
         old_klass = 'sc.photogallery.content.photogallery.PhotoGallery'
@@ -81,9 +78,7 @@ class To1001TestCase(BaseUpgradeTestCase):
 
         # run the upgrade step to validate the update
         self._do_upgrade_step(step)
-        for id in JS:
-            self.assertIn(id, js_tool.getResourceIds())
-
+        self.assertIn(JS, js_tool.getResourceIds())
         self.assertEqual(types_tool['Photo Gallery'].klass, new_klass)
 
     def test_update_catalog(self):

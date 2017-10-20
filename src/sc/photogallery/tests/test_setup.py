@@ -4,21 +4,16 @@ from plone.browserlayer.utils import registered_layers
 from sc.photogallery.config import PROJECTNAME
 from sc.photogallery.interfaces import IBrowserLayer
 from sc.photogallery.testing import INTEGRATION_TESTING
+from sc.photogallery.testing import IS_PLONE_5
 
 import unittest
 
 
-JS = (
-    '++resource++sc.photogallery/photogallery.js',
-)
-
-CSS = (
-    '++resource++sc.photogallery/photogallery.css',
-)
+JS = '++resource++sc.photogallery/photogallery.js'
+CSS = '++resource++sc.photogallery/photogallery.css'
 
 
 class InstallTestCase(unittest.TestCase):
-
     """Ensure product is properly installed."""
 
     layer = INTEGRATION_TESTING
@@ -33,15 +28,15 @@ class InstallTestCase(unittest.TestCase):
     def test_browser_layer_installed(self):
         self.assertIn(IBrowserLayer, registered_layers())
 
+    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
     def test_jsregistry(self):
-        js_resources = self.portal['portal_javascripts'].getResourceIds()
-        for id in JS:
-            self.assertIn(id, js_resources)
+        resource_ids = self.portal.portal_javascripts.getResourceIds()
+        self.assertIn(JS, resource_ids)
 
+    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
     def test_cssregistry(self):
-        css_resources = self.portal['portal_css'].getResourceIds()
-        for id in CSS:
-            self.assertIn(id, css_resources)
+        resource_ids = self.portal.portal_css.getResourceIds()
+        self.assertIn(CSS, resource_ids)
 
     def test_setup_permission(self):
         permission = 'sc.photogallery: Setup'
@@ -66,7 +61,6 @@ class InstallTestCase(unittest.TestCase):
 
 
 class UninstallTestCase(unittest.TestCase):
-
     """Ensure product is properly uninstalled."""
 
     layer = INTEGRATION_TESTING
@@ -82,15 +76,15 @@ class UninstallTestCase(unittest.TestCase):
     def test_browser_layer_removed_uninstalled(self):
         self.assertNotIn(IBrowserLayer, registered_layers())
 
-    def test_jsregistry(self):
-        js_resources = self.portal['portal_javascripts'].getResourceIds()
-        for id in JS:
-            self.assertNotIn(id, js_resources)
+    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
+    def test_jsregistry_removed(self):
+        resource_ids = self.portal.portal_javascripts.getResourceIds()
+        self.assertNotIn(JS, resource_ids)
 
-    def test_cssregistry(self):
-        css_resources = self.portal['portal_css'].getResourceIds()
-        for id in CSS:
-            self.assertNotIn(id, css_resources)
+    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
+    def test_cssregistry_removed(self):
+        resource_ids = self.portal.portal_css.getResourceIds()
+        self.assertNotIn(CSS, resource_ids)
 
     def test_tile_removed(self):
         tiles = api.portal.get_registry_record('plone.app.tiles')

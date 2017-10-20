@@ -55,10 +55,9 @@ setup(
     ],
     extras_require={
         'test': [
-            'collective.cover [test]',
             'mock',
             'plone.app.robotframework',
-            'plone.app.testing [robot] >=4.2.2',
+            'plone.app.testing [robot]',
             'plone.browserlayer',
             'plone.testing',
             'plone.uuid',

@@ -18,7 +18,6 @@ if HAS_ZIPEXPORT:
 
 
 class View(DefaultView, PhotoGalleryMixin):
-
     """Slideshow view for Photo Gallery content type."""
 
     def id(self):
@@ -64,7 +63,11 @@ class View(DefaultView, PhotoGalleryMixin):
         return enabled_globally and allow_download
 
     def img_size(self, item):
-        return '{0:.1f} MB'.format(item.size() / float(1024 * 1024))
+        try:
+            size = item.size()  # Archetypes
+        except AttributeError:
+            size = item.image.size  # Dexterity
+        return '{0:.1f} MB'.format(size / float(1024 * 1024))
 
     @property
     def can_zipexport(self):

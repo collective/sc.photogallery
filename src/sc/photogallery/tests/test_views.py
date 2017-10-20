@@ -2,11 +2,10 @@
 from DateTime import DateTime
 from plone import api
 from sc.photogallery.config import HAS_ZIPEXPORT
-from sc.photogallery.interfaces import IPhotoGallery
 from sc.photogallery.interfaces import IPhotoGallerySettings
 from sc.photogallery.testing import IMAGES
 from sc.photogallery.testing import INTEGRATION_TESTING
-from zope.interface import alsoProvides
+from sc.photogallery.tests.api_hacks import set_image_field
 
 import unittest
 
@@ -26,22 +25,22 @@ class ViewTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        alsoProvides(self.request, IPhotoGallery)
 
         with api.env.adopt_roles(['Manager']):
             self.gallery = api.content.create(
+                container=self.portal,
                 type='Photo Gallery',
                 title='My Photo Gallery',
-                container=self.portal
             )
-            for i, name in enumerate(IMAGES):
-                obj = api.content.create(
-                    type='Image',
-                    title='My Image {0}'.format(i + 1),
-                    container=self.gallery,
-                    image=load_file(name)
-                )
-                setattr(self, 'image_{0}'.format(i + 1), obj)
+
+        for i, name in enumerate(IMAGES):
+            obj = api.content.create(
+                container=self.gallery,
+                type='Image',
+                title='My Image {0}'.format(i + 1),
+            )
+            set_image_field(obj, load_file(name), 'image/jpeg')
+            setattr(self, 'image_{0}'.format(i + 1), obj)
 
         self.view = api.content.get_view('view', self.gallery, self.request)
 
@@ -103,22 +102,22 @@ class ZipViewTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        alsoProvides(self.request, IPhotoGallery)
 
         with api.env.adopt_roles(['Manager']):
             self.gallery = api.content.create(
+                container=self.portal,
                 type='Photo Gallery',
                 title='My Photo Gallery',
-                container=self.portal
             )
-            for i, name in enumerate(IMAGES):
-                obj = api.content.create(
-                    type='Image',
-                    title='My Image {0}'.format(i + 1),
-                    container=self.gallery,
-                    image=load_file(name)
-                )
-                setattr(self, 'image_{0}'.format(i + 1), obj)
+
+        for i, name in enumerate(IMAGES):
+            obj = api.content.create(
+                container=self.gallery,
+                type='Image',
+                title='My Image {0}'.format(i + 1),
+            )
+            set_image_field(obj, load_file(name), 'image/jpeg')
+            setattr(self, 'image_{0}'.format(i + 1), obj)
 
         self.view = api.content.get_view('zip', self.gallery, self.request)
 

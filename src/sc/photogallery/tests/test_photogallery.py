@@ -53,11 +53,9 @@ class PhotoGalleryTestCase(unittest.TestCase):
         self.folder.setDefaultPage('gallery')
         self.assertEqual(self.folder.getDefaultPage(), 'gallery')
 
-    def test_image(self):
+    def test_no_image(self):
         self.assertIsNone(self.gallery.image())
-        # TODO: handle Dexterity-based Image
-        api.content.create(self.gallery, 'Image', 'foo', image=zptlogo)
-        self.assertEqual(self.gallery.image().data, zptlogo)
+        self.assertIsNone(self.gallery.tag())
 
     def test_image_caption(self):
         self.assertEqual(self.gallery.image_caption(), u'')
@@ -65,9 +63,13 @@ class PhotoGalleryTestCase(unittest.TestCase):
             self.gallery, 'Image', 'foo', description=u'Foo')
         self.assertEqual(self.gallery.image_caption(), u'Foo')
 
-    def test_tag(self):
-        self.assertIsNone(self.gallery.tag())
-        # TODO: handle Dexterity-based Image
-        api.content.create(self.gallery, 'Image', 'foo', image=zptlogo)
-        self.assertIn(
-            'http://nohost/plone/test/gallery/foo/image', self.gallery.tag())
+    def test_image(self):
+        from sc.photogallery.tests.api_hacks import set_image_field
+        image = api.content.create(self.gallery, 'Image', 'foo')
+        set_image_field(image, zptlogo, 'image/gif')
+        try:
+            data = self.gallery.image().image.data  # Dexterity
+        except AttributeError:
+            data = self.gallery.image().data  # Archetypes
+        self.assertEqual(data, zptlogo)
+        self.assertIn(u'height="16" width="16"', self.gallery.tag())
