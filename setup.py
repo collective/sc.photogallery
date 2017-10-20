@@ -30,7 +30,7 @@ setup(
     keywords='plone photo gallery content type dexterity',
     author='Simples Consutoria',
     author_email='produtos@simplesconsultoria.com.br',
-    url='https://github.com/simplesconsultoria/sc.photogallery',
+    url='https://github.com/collective/sc.photogallery',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=['sc'],

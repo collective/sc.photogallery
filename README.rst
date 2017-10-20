@@ -15,11 +15,11 @@ Mostly Harmless
 .. image:: http://img.shields.io/pypi/v/sc.photogallery.svg
     :target: https://pypi.python.org/pypi/sc.photogallery
 
-.. image:: https://img.shields.io/travis/simplesconsultoria/sc.photogallery/master.svg
-    :target: http://travis-ci.org/simplesconsultoria/sc.photogallery
+.. image:: https://img.shields.io/travis/collective/sc.photogallery/master.svg
+    :target: http://travis-ci.org/collective/sc.photogallery
 
-.. image:: https://img.shields.io/coveralls/simplesconsultoria/sc.photogallery/master.svg
-    :target: https://coveralls.io/r/simplesconsultoria/sc.photogallery
+.. image:: https://img.shields.io/coveralls/collective/sc.photogallery/master.svg
+    :target: https://coveralls.io/r/collective/sc.photogallery
 
 These are some sites using ``sc.photogallery``:
 
@@ -27,7 +27,7 @@ These are some sites using ``sc.photogallery``:
 
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
-.. _`opening a support ticket`: https://github.com/simplesconsultoria/sc.photogallery/issues
+.. _`opening a support ticket`: https://github.com/collective/sc.photogallery/issues
 
 Don't Panic
 ===========
