@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from sc.photogallery.testing import INTEGRATION_TESTING
+from sc.photogallery.testing import IS_PLONE_5
 
 import unittest
 
@@ -58,6 +59,7 @@ class To1001TestCase(BaseUpgradeTestCase):
         self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self._get_registered_steps, 4)
 
+    @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
     def test_miscellaneous(self):
         # check if the upgrade step is registered
         title = u'Miscellaneous'

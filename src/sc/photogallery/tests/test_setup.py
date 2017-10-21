@@ -3,6 +3,7 @@ from plone import api
 from plone.browserlayer.utils import registered_layers
 from sc.photogallery.config import PROJECTNAME
 from sc.photogallery.interfaces import IBrowserLayer
+from sc.photogallery.testing import HAS_COVER
 from sc.photogallery.testing import INTEGRATION_TESTING
 from sc.photogallery.testing import IS_PLONE_5
 
@@ -55,6 +56,7 @@ class InstallTestCase(unittest.TestCase):
         self.assertEqual(
             setup.getLastVersionForProfile(profile), (u'1001',))
 
+    @unittest.skipUnless(HAS_COVER, 'requires plone.app.tiles')
     def test_tile(self):
         tiles = api.portal.get_registry_record('plone.app.tiles')
         self.assertIn(u'sc.photogallery', tiles)

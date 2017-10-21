@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Setup of test for the package.
+"""Setup testing infrastructure.
 
-Prepare test fixtures; note that in Plone >= 5.0 we need to manually
-install the desired content types.
+For Plone 5 we need to install plone.app.contenttypes.
 
-We install collective.cover to test the availibility and features of
-the tile included for that package.
+Tile for collective.cover is only tested in Plone 4.3.
 """
 from plone import api
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
@@ -24,8 +22,10 @@ try:
     pkg_resources.get_distribution('plone.app.contenttypes')
 except pkg_resources.DistributionNotFound:
     from plone.app.testing import PLONE_FIXTURE
+    HAS_DEXTERITY = False
 else:
     from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE as PLONE_FIXTURE
+    HAS_DEXTERITY = True
 
 try:
     pkg_resources.get_distribution('collective.cover')

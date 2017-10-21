@@ -12,9 +12,6 @@ env:
 - PLONE_VERSION=5.0
 - PLONE_VERSION=5.1
 matrix:
-  allow_failures:
-  - env: PLONE_VERSION=5.0
-  - env: PLONE_VERSION=5.1
   fast_finish: true
 install:
 - sed -ie "s#test-4.3#test-$PLONE_VERSION#" buildout.cfg
@@ -29,7 +26,7 @@ before_script:
 - firefox -v
 script:
 - bin/code-analysis
-- bin/test
+- CATALOG_OPTIMIZATION_DISABLED=true bin/test
 after_success:
 - bin/createcoverage --output-dir=htmlcov -t "--layer=!Robot"
 - pip install coveralls
