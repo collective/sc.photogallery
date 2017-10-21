@@ -30,7 +30,7 @@ Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 .. _`opening a support ticket`: https://github.com/collective/sc.photogallery/issues
 
 Known issues
-^^^^^^^^^^^^
+------------
 
 * `ZIP functionality doesn't seem to support Dexterity based images <https://github.com/collective/sc.photogallery/issues/37>`_.
 
