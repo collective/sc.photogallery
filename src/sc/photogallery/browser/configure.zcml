@@ -15,7 +15,7 @@
       />
 
   <browser:page
-      for="sc.photogallery.content.PhotoGallery"
+      for="sc.photogallery.interfaces.IPhotoGallery"
       name="view"
       class="sc.photogallery.browser.View"
       template="templates/view.pt"
@@ -24,7 +24,7 @@
       />
 
   <browser:page zcml:condition="installed ftw.zipexport"
-      for="sc.photogallery.content.PhotoGallery"
+      for="sc.photogallery.interfaces.IPhotoGallery"
       name="zip"
       class=".ZipView"
       permission="zope2.View"
@@ -33,7 +33,7 @@
 
   <!-- XXX: compatibility with summary_view in collections -->
   <browser:page
-      for="sc.photogallery.content.PhotoGallery"
+      for="sc.photogallery.interfaces.IPhotoGallery"
       name="images"
       class=".scaling.ImageScaling"
       allowed_interface="plone.app.imaging.interfaces.IImageScaling"
