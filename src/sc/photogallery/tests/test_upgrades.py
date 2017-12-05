@@ -118,3 +118,37 @@ class To1001TestCase(BaseUpgradeTestCase):
         configlet = cptool.getActionObject('Products/photogallery')
         new_permissions = ('sc.photogallery: Setup',)
         self.assertEqual(configlet.getPermissions(), new_permissions)
+
+
+class To1002TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'1001', u'1002')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 3)
+
+    @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
+    def test_swiper_css_and_js_registered(self):
+        # check if the upgrade step is registered
+        title = u'Update CSS and JS registry'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        css_tool = self.portal['portal_css']
+        CSS = '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css'
+        css_tool.unregisterResource(CSS)
+        self.assertNotIn(CSS, css_tool.getResourceIds())
+
+        js_tool = self.portal['portal_javascripts']
+        JS = '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'
+        js_tool.unregisterResource(JS)
+        self.assertNotIn(JS, js_tool.getResourceIds())
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertIn(CSS, css_tool.getResourceIds())
+        self.assertIn(JS, js_tool.getResourceIds())

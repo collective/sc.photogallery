@@ -54,7 +54,7 @@ class InstallTestCase(unittest.TestCase):
         setup = self.portal['portal_setup']
         profile = 'sc.photogallery:default'
         self.assertEqual(
-            setup.getLastVersionForProfile(profile), (u'1001',))
+            setup.getLastVersionForProfile(profile), (u'1002',))
 
     @unittest.skipUnless(HAS_COVER, 'requires plone.app.tiles')
     def test_tile(self):

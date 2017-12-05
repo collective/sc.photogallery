@@ -28,7 +28,7 @@
       <genericsetup:upgradeStep
           title="Cook JS resources"
           description="There were changes in the JS registry."
-          handler=".cook_javascript_resources"
+          handler="..cook_javascript_resources"
           />
 
       <genericsetup:upgradeStep
