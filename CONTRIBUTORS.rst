@@ -6,12 +6,12 @@ Share and Enjoy
 - André Nogueira
 - Héctor Velarde
 - Rodrigo Ferreira de Souza
-- `Cycle2 slideshow plugin for jQuery`_
+- `Swiper - Most Modern Mobile Touch Slider`_
 - Font Awesome (`icon`_)
 - Wolfgang Beyer (`Mandelbrot image set`_ used in tests)
 
 Development sponsored by Simples Consultoria.
 
-.. _`Cycle2 slideshow plugin for jQuery`: http://jquery.malsup.com/cycle2/
+.. _`Swiper - Most Modern Mobile Touch Slider`: http://idangero.us/swiper/
 .. _`icon`: http://fontawesome.io/icon/picture-o/
 .. _`Mandelbrot image set`: https://commons.wikimedia.org/wiki/File:Mandel_zoom_00_mandelbrot_set.jpg

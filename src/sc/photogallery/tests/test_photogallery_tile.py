@@ -58,9 +58,3 @@ class PhotoGalleryTileTestCase(TestTileMixin, unittest.TestCase):
                 self.portal, 'Photo Gallery', 'g1')
         self.tile.populate_with_object(g1)
         self.assertIn(u'slideshow-player', self.tile())
-
-    def test_render_js_resources(self):
-        from sc.photogallery.config import JS_RESOURCES
-        rendered = self.tile()
-        for js in JS_RESOURCES:
-            self.assertIn(js, rendered)

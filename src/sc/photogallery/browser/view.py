@@ -6,7 +6,6 @@ from plone.memoize.instance import memoizedproperty
 from sc.photogallery.config import HAS_ZIPEXPORT
 from sc.photogallery.interfaces import IPhotoGallerySettings
 from sc.photogallery.utils import last_modified
-from sc.photogallery.utils import PhotoGalleryMixin
 from zope.component import getMultiAdapter
 
 import os
@@ -17,7 +16,7 @@ if HAS_ZIPEXPORT:
     from ftw.zipexport.interfaces import IZipRepresentation
 
 
-class View(DefaultView, PhotoGalleryMixin):
+class View(DefaultView):
     """Slideshow view for Photo Gallery content type."""
 
     def id(self):

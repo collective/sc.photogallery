@@ -4,11 +4,6 @@
    xmlns:tal="http://xml.zope.org/namespaces/tal"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    i18n:domain="sc.photogallery">
-  <head tal:define="portal_url context/@@plone_portal_state/portal_url">
-    <tal:scripts repeat="js view/js_resources">
-      <script tal:attributes="src string:${portal_url}/${js}"></script>
-    </tal:scripts>
-  </head>
   <body tal:define="is_empty nocall:view/is_empty">
     <p tal:condition="python:is_empty and view.is_compose_mode()">
       Drag&amp;drop a Photo Gallery here.

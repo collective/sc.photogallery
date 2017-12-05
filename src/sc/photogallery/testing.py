@@ -58,9 +58,6 @@ class Fixture(PloneSandboxLayer):
             import ftw.zipexport
             self.loadZCML(package=ftw.zipexport)
 
-        import collective.js.cycle2
-        self.loadZCML(package=collective.js.cycle2)
-
         import sc.photogallery
         self.loadZCML(package=sc.photogallery)
 
@@ -71,7 +68,6 @@ class Fixture(PloneSandboxLayer):
         if HAS_ZIPEXPORT:
             self.applyProfile(portal, 'ftw.zipexport:default')
 
-        self.applyProfile(portal, 'collective.js.cycle2:default')
         self.applyProfile(portal, 'sc.photogallery:default')
 
         current_dir = os.path.abspath(os.path.dirname(__file__))

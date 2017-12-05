@@ -49,12 +49,6 @@ class ViewTestCase(unittest.TestCase):
         record = IPhotoGallerySettings.__identifier__ + '.enable_download'
         api.portal.set_registry_record(record, True)
 
-    def test_render_js_resources(self):
-        from sc.photogallery.config import JS_RESOURCES
-        rendered = self.view()
-        for js in JS_RESOURCES:
-            self.assertIn(js, rendered)
-
     def test_can_download(self):
         self.assertFalse(self.view.can_download)
         self._enable_download()

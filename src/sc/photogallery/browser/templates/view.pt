@@ -4,13 +4,6 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="sc.photogallery">
-  <head>
-    <metal:javascriptslot fill-slot="javascript_head_slot">
-      <tal:scripts repeat="js view/js_resources">
-        <script tal:attributes="src string:${portal_url}/${js}"></script>
-      </tal:scripts>
-    </metal:javascriptslot>
-  </head>
   <body>
     <metal:block fill-slot="content-core" tal:define="is_empty view/is_empty">
       <tal:text define="text context/text/output|nothing">

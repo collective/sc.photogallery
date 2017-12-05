@@ -7,7 +7,6 @@ from plone.tiles.interfaces import ITileDataManager
 from plone.uuid.interfaces import IUUID
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from sc.photogallery import _
-from sc.photogallery.utils import PhotoGalleryMixin
 from zope import schema
 from zope.interface import implementer
 
@@ -24,7 +23,7 @@ class IPhotoGalleryTile(IPersistentCoverTile):
 
 
 @implementer(IPhotoGalleryTile)
-class PhotoGalleryTile(PersistentCoverTile, PhotoGalleryMixin):
+class PhotoGalleryTile(PersistentCoverTile):
 
     """A tile that shows a photo gallery."""
 
