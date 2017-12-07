@@ -1,0 +1,126 @@
+#content .photogallery .gallery-top {
+  width: 100%;
+  max-width: 748px;
+
+  border: 1px solid #000;
+
+  .swiper-slide {
+    font-size: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    background: #FFF;
+
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-player {
+    position: relative;
+
+    width: 100%;
+    max-width: 748px;
+  }
+  .aspect-16-9:before {
+    display: block;
+
+    width: 100%;
+    // https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+    // 16:9 = 9/16 * 100 = 56.25
+    padding-top: 56.25%;
+
+    content: '';
+  }
+  .swiper-image-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .swiper-image-wrapper img {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 100% !important;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 50px;
+    height: 60px;
+
+    border-radius: 5px;
+    background-color: #000;
+  }
+  .swiper-description {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 7px;
+
+    text-align: start;
+  }
+  .swiper-rights {
+    font-size: 10px;
+
+    margin-bottom: 7px;
+
+    text-transform: uppercase;
+  }
+  .swiper-title a,
+  .swiper-title a:visited,
+  .swiper-title a:hover {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+    border: none;
+  }
+  .swiper-pagination {
+    position: static;
+
+    box-sizing: border-box;
+    width: auto;
+    margin: 0 7px;
+    padding: 12px 0 7px 0;
+  }
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+
+    opacity: 1;
+    background: #000;
+  }
+  .swiper-pagination-bullet-active {
+    opacity: .2;
+  }
+}
+#content .photogallery .gallery-thumbs {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 748px;
+  height: 20%;
+  padding: 10px 0;
+
+  border: 1px solid #000;
+  .swiper-slide {
+    display: flex;
+
+    width: 128px;
+    height: 128px;
+
+    cursor: pointer;
+
+    opacity: .4;
+    border: 1px solid #000;
+
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-slide-active {
+    opacity: 1;
+  }
+}

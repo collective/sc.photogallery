@@ -103,3 +103,12 @@ class View(DefaultView):
 
     def zip_size(self):
         return self._zip_size(self.last_modified)
+
+    def get_media_producer(self, item):
+        try:
+            media_producer = item.Rights()
+        except AttributeError:
+            media_producer = u''
+        if item.portal_type == 'collective.nitf.content':
+            media_producer = item.media_producer()
+        return media_producer

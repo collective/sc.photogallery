@@ -139,12 +139,12 @@ class To1002TestCase(BaseUpgradeTestCase):
 
         # simulate state on previous version
         css_tool = self.portal['portal_css']
-        CSS = '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css'
+        CSS = '//cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css'
         css_tool.unregisterResource(CSS)
         self.assertNotIn(CSS, css_tool.getResourceIds())
 
         js_tool = self.portal['portal_javascripts']
-        JS = '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'
+        JS = '//cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js'
         js_tool.unregisterResource(JS)
         self.assertNotIn(JS, js_tool.getResourceIds())
 

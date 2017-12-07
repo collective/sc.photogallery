@@ -18,60 +18,73 @@
           <div tal:content="structure text">The body</div>
         </div>
       </tal:text>
-      <div class="slideshow-container"
+      <div class="photogallery"
            tal:condition="not:is_empty"
            tal:attributes="id string:photogallery-${view/id}">
-        <div class="slideshow-player">
-          <div class="cycle-player cycle-slideshow"
-               data-cycle-slides="> div"
-               data-cycle-timeout="0"
-               data-cycle-swipe="true"
-               data-allow-wrap="true"
-               data-cycle-fx="fade"
-               data-cycle-log="false"
-               tal:attributes="data-cycle-prev string:#photogallery-${view/id} .cycle-prev;
-                               data-cycle-next string:#photogallery-${view/id} .cycle-next">
-            <div tal:repeat="item view/results">
-              <tal:image define="image python:view.image(item)">
-                <img tal:attributes="alt item/Title;
-                                     height image/height;
-                                     src image/url;
-                                     width image/width">
-              </tal:image>
-            </div>
-          </div><!-- cycle-player -->
-          <div class="cycle-navigation">
-            <a href="#" class="cycle-prev"><span>&#x27E8;</span></a>
-            <a href="#" class="cycle-next"><span>&#x27E9;</span></a>
-          </div>
-        </div><!-- slideshow-player -->
-        <div class="slideshow-pager">
-          <div class="slideshow-description">
-            <div class="cycle-description cycle-slideshow"
-                 data-cycle-slides="> div"
-                 data-cycle-timeout="0"
-                 data-allow-wrap="true"
-                 data-cycle-fx="fade"
-                 data-cycle-log="false">
-              <div tal:repeat="item view/results">
-                <div class="slide-pagination">
-                  <span class="slide-num" tal:content="repeat/item/number" /> |
-                  <span class="slide-count" tal:content="repeat/item/length" />
+        <div class="swiper-container gallery-top"
+             tal:condition="not:is_empty"
+             tal:attributes="id string:photogallery-${view/id}">
+          <div class="swiper-wrapper">
+            <tal:items repeat="item view/results">
+              <div class="swiper-slide">
+                <tal:download condition="view/can_download">
+                  <div class="swiper-download">
+                    <a class="download"
+                       tal:attributes="href string:${item/absolute_url}/download">
+                      <span i18n:translate="">
+                        Download image (<span tal:replace="python:view.img_size(item)" i18n:name="img_size" />)
+                      </span>
+                    </a>
+                    <tal:zip condition="view/can_zipexport">
+                      <a class="download album"
+                         tal:attributes="href view/zip_url">
+                        <span i18n:translate="">
+                          Download all images on a ZIP file (<span tal:replace="view/zip_size" i18n:name="zip_size" />)
+                        </span>
+                      </a>
+                    </tal:zip>
+                  </div>
+                </tal:download>
+                <div class="swiper-player aspect-16-9">
+                  <div class="swiper-image-wrapper">
+                    <tal:image define="image python:view.image(item)">
+                      <img tal:attributes="alt item/Title;
+                                           height image/height;
+                                           src image/url;
+                                           width image/width">
+                    </tal:image>
+                  </div>
                 </div>
-                <div class="description" tal:content="item/Description|item/Title"></div>
+                <div class="swiper-information">
+                  <div class="swiper-information-wrapper">
+                    <div class="swiper-rights"
+                         tal:content="python:view.get_media_producer(item)">
+                      Crédito Foto / RBA
+                    </div>
+                    <div class="swiper-title">
+                      <a tal:attributes="href item/absolute_url"
+                         tal:content="item/Title" />
+                    </div>
+                    <div class="swiper-descriptionn"
+                         tal:content="item/Description" />
+                  </div>
+                  <div class="slide-pagination">
+                    <span class="slide-num" tal:content="repeat/item/number" /> |
+                    <span class="slide-count" tal:content="repeat/item/length" />
+                  </div>
+                </div>
               </div>
-            </div><!-- cycle-description -->
-          </div><!-- slideshow-description -->
-          <div class="slideshow-carrossel">
-            <div class="cycle-carrossel cycle-slideshow"
-                 data-cycle-fx="carousel"
-                 data-cycle-slides="> div"
-                 data-cycle-timeout="0"
-                 data-cycle-carousel-fluid="true"
-                 data-allow-wrap="false"
-                 data-cycle-log="false">
-              <div class="thumb-itens"
-                   tal:repeat="item view/results">
+            </tal:items>
+          </div>
+          <div class="swiper-button-next swiper-button-white"></div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+        <div class="swiper-container gallery-thumbs"
+             tal:condition="not:is_empty"
+             tal:attributes="id string:photogallery-${view/id}">
+          <div class="swiper-wrapper">
+            <tal:items repeat="item view/results">
+              <div class="swiper-slide">
                 <tal:image define="thumbnail python:view.image(item, scale='thumb')"
                            condition="thumbnail">
                   <img tal:attributes="alt item/Title;
@@ -80,35 +93,9 @@
                                        width thumbnail/width">
                 </tal:image>
               </div>
-            </div><!-- cycle-carrossel -->
-          </div><!-- slideshow-carrossel -->
-          <tal:download condition="view/can_download">
-            <div class="slideshow-download">
-              <div class="cycle-download cycle-slideshow"
-                   data-cycle-slides="> div"
-                   data-cycle-timeout="0"
-                   data-cycle-fx="fade"
-                   data-cycle-log="false">
-                <div tal:repeat="item view/results">
-                  <a class="download"
-                     tal:attributes="href string:${item/absolute_url}/download">
-                    <span i18n:translate="">
-                      Download image (<span tal:replace="python:view.img_size(item)" i18n:name="img_size" />)
-                    </span>
-                  </a>
-                </div>
-              </div><!-- cycle-download -->
-            </div><!-- slideshow-download -->
-            <tal:zip condition="view/can_zipexport">
-              <a class="download album"
-                 tal:attributes="href view/zip_url">
-                <span i18n:translate="">
-                  Download all images on a ZIP file (<span tal:replace="view/zip_size" i18n:name="zip_size" />)
-                </span>
-              </a>
-            </tal:zip>
-          </tal:download>
-        </div><!-- slideshow-pager -->
+            </tal:items>
+          </div>
+        </div>
       </div>
       <div class="" tal:condition="is_empty" i18n:translate="">
         This photo gallery has no images on it.

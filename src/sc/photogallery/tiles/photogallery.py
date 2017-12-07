@@ -70,3 +70,12 @@ class PhotoGalleryTile(PersistentCoverTile):
 
         scales = obj.restrictedTraverse('@@images')
         return scales.scale('image', scale)
+
+    def get_media_producer(self, item):
+        try:
+            media_producer = item.Rights()
+        except AttributeError:
+            media_producer = u''
+        if item.portal_type == 'collective.nitf.content':
+            media_producer = item.media_producer()
+        return media_producer
