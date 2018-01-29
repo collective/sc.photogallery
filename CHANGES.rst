@@ -6,7 +6,7 @@ There's a frood who really knows where his towel is.
 1.0b2 (unreleased)
 ------------------
 
-- Add webpack.
+- Process static resources using webpack.
   [rodfersou]
 
 - Fix registration of Photo Gallery views.
