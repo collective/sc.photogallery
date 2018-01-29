@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0b2 (unreleased)
 ------------------
 
+- Add compatibility with Python 3.
+  [hvelarde]
+
 - Fix human readable file sizes (fixes `#23 <https://github.com/collective/sc.photogallery/issues/23>`_).
   [hvelarde]
 

@@ -78,7 +78,7 @@ class ViewTestCase(unittest.TestCase):
 
     def test_last_modified(self):
         now = int(DateTime().strftime('%s'))
-        for i in xrange(1, 6):
+        for i in range(1, 6):
             image = getattr(self, 'image_{0}'.format(i))
             int_future_date = now + (60 * i)  # Some minutes after now
             image.modification_date = DateTime(int_future_date)
@@ -131,7 +131,7 @@ class ZipViewTestCase(unittest.TestCase):
 
     def test_last_modified(self):
         now = int(DateTime().strftime('%s'))
-        for i in xrange(1, 6):
+        for i in range(1, 6):
             image = getattr(self, 'image_{0}'.format(i))
             int_future_date = now + (60 * i)  # Some minutes after now
             image.modification_date = DateTime(int_future_date)
