@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0b2 (unreleased)
 ------------------
 
+- Remove indirect dependency on five.grok.
+  [hvelarde]
+
 - Add compatibility with Python 3.
   [hvelarde]
 

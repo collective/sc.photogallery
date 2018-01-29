@@ -39,7 +39,7 @@ setup(
     install_requires=[
         'collective.js.cycle2',
         'plone.api',
-        'plone.app.dexterity [grok, relations]',
+        'plone.app.dexterity [relations]',
         'plone.app.relationfield',
         'plone.app.textfield',
         'plone.app.upgrade',
