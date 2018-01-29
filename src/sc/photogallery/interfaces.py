@@ -39,7 +39,6 @@ class IPhotoGallerySettings(model.Schema):
         title=_(u'Enable image download globally?'),
         description=_(
             u'Enable download of original images in photo galleries by using an explicit link. '
-            u'If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images.'
-        ),
-        default=False
+            u'If ftw.zipexport is installed, enable also downloading of a ZIP file with all the images.'),
+        default=False,
     )

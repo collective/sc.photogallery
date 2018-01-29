@@ -93,7 +93,7 @@ class View(DefaultView, PhotoGalleryMixin):
             return '{0:.1f} MB'.format(0)
 
         with ZipGenerator() as generator:
-            for obj in [self.context, ]:
+            for obj in [self.context]:
                 repre = getMultiAdapter(
                     (obj, self.request), interface=IZipRepresentation)
                 for path, pointer in repre.get_files():

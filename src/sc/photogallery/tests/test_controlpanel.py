@@ -70,5 +70,5 @@ class RegistryTestCase(unittest.TestCase):
 
         self.assertNotIn(
             IPhotoGallerySettings.__identifier__ + '.enable_download',
-            self.registry
+            self.registry,
         )

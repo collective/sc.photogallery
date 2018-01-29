@@ -88,7 +88,7 @@ class ViewTestCase(unittest.TestCase):
         url = 'http://nohost/plone/my-photo-gallery/@@zip/{0}/my-photo-gallery.zip'
         self.assertEqual(
             self.view.zip_url(),
-            url.format(self.view.last_modified)
+            url.format(self.view.last_modified),
         )
 
     # FIXME: https://github.com/collective/sc.photogallery/issues/37
@@ -141,7 +141,7 @@ class ZipViewTestCase(unittest.TestCase):
         filename = 'http://nohost/plone/my-photo-gallery/@@zip/{0}/my-photo-gallery.zip'
         self.assertEqual(
             self.view.filename,
-            filename.format(self.view.last_modified)
+            filename.format(self.view.last_modified),
         )
 
     # FIXME: https://github.com/collective/sc.photogallery/issues/37
@@ -156,7 +156,7 @@ class ZipViewTestCase(unittest.TestCase):
         )
         self.assertEqual(
             response.getHeader('Content-Disposition'),
-            disposition.format(self.view.last_modified)
+            disposition.format(self.view.last_modified),
         )
         self.assertEqual(response.getHeader('Content-type'), 'application/zip')
         self.assertEqual(response.getHeader('Content-Length'), '419321')
