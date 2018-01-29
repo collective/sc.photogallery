@@ -31,3 +31,18 @@ def last_modified(context):
     modified.sort()
     # return the most recent date
     return modified[-1]
+
+
+def human_readable_size(size):
+    """Return a number in human readable format."""
+    if size < 0:
+        raise ValueError
+
+    if size < 1024:
+        return str(size)
+    else:
+        for unit in ['kB', 'MB', 'GB']:
+            size /= 1024.0
+            if abs(size) < 1024.0:
+                return '{size:3.1f} {unit}'.format(size=size, unit=unit)
+        return '{size:.1f} GB'.format(size=size)

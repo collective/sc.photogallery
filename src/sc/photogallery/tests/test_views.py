@@ -63,11 +63,11 @@ class ViewTestCase(unittest.TestCase):
         self.assertFalse(self.view.can_download)
 
     def test_img_size(self):
-        self.assertEqual(self.view.img_size(self.image_1), '0.0 MB')
-        self.assertEqual(self.view.img_size(self.image_2), '0.1 MB')
-        self.assertEqual(self.view.img_size(self.image_3), '0.1 MB')
-        self.assertEqual(self.view.img_size(self.image_4), '0.1 MB')
-        self.assertEqual(self.view.img_size(self.image_5), '0.1 MB')
+        self.assertEqual(self.view.img_size(self.image_1), '28.0 kB')
+        self.assertEqual(self.view.img_size(self.image_2), '79.3 kB')
+        self.assertEqual(self.view.img_size(self.image_3), '79.2 kB')
+        self.assertEqual(self.view.img_size(self.image_4), '134.5 kB')
+        self.assertEqual(self.view.img_size(self.image_5), '88.0 kB')
 
     def test_can_zipexport(self):
         self.assertFalse(self.view.can_zipexport)
@@ -95,7 +95,7 @@ class ViewTestCase(unittest.TestCase):
     @unittest.skipUnless(
         HAS_ZIPEXPORT and not HAS_DEXTERITY, 'requires ftw.zipexport')
     def test_zip_size(self):
-        self.assertEqual(self.view._zip_size(), '0.4 MB')
+        self.assertEqual(self.view._zip_size(), '409.5 kB')
 
 
 class ZipViewTestCase(unittest.TestCase):

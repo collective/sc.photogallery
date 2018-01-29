@@ -5,6 +5,7 @@ from plone.memoize import forever
 from plone.memoize.instance import memoizedproperty
 from sc.photogallery.config import HAS_ZIPEXPORT
 from sc.photogallery.interfaces import IPhotoGallerySettings
+from sc.photogallery.utils import human_readable_size
 from sc.photogallery.utils import last_modified
 from sc.photogallery.utils import PhotoGalleryMixin
 from zope.component import getMultiAdapter
@@ -67,7 +68,7 @@ class View(DefaultView, PhotoGalleryMixin):
             size = item.size()  # Archetypes
         except AttributeError:
             size = item.image.size  # Dexterity
-        return '{0:.1f} MB'.format(size / float(1024 * 1024))
+        return human_readable_size(size)
 
     @property
     def can_zipexport(self):
@@ -90,7 +91,7 @@ class View(DefaultView, PhotoGalleryMixin):
     @forever.memoize
     def _zip_size(self, last_modified=None):
         if not HAS_ZIPEXPORT:
-            return '{0:.1f} MB'.format(0)
+            return
 
         with ZipGenerator() as generator:
             for obj in [self.context]:
@@ -100,7 +101,7 @@ class View(DefaultView, PhotoGalleryMixin):
                     generator.add_file(path, pointer)
             zip_file = generator.generate()
             size = os.stat(zip_file.name).st_size
-            return '{0:.1f} MB'.format(size / float(1024 * 1024))
+            return human_readable_size(size)
 
     def zip_size(self):
         return self._zip_size(self.last_modified)
