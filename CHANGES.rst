@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 1.0b3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix brown bag release.
+  [hvelarde]
 
 
 1.0b2 (2018-01-29)
