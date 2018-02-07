@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 1.0b4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Review publicPath configuration to remove '/' in the beginning of resources registration, what leads to configuration problems on backends using proxy servers.
+  [rodfersou]
 
 
 1.0b3 (2018-01-30)

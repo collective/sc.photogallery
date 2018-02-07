@@ -10,7 +10,7 @@ module.exports = {
     library: 'photogallery',
     libraryTarget: 'umd',
     path: __dirname + '/../src/sc/photogallery/browser/static',
-    publicPath: '/++theme++sc.photogallery/'
+    publicPath: '++theme++sc.photogallery/'
   },
   module: {
     rules: [{
